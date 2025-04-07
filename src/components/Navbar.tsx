@@ -37,32 +37,32 @@ export default function Navbar() {
   };
 
   return (
-    <nav className="sticky top-0 z-50 w-full bg-white dark:bg-gray-900 shadow-md">
+    <nav className="sticky top-0 z-10 bg-white dark:bg-gray-900 shadow-md transition-colors duration-200">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between h-16 items-center">
           {/* Logo/Brand */}
           <div className="flex-shrink-0">
-            <Link href="#about" className="text-xl font-bold text-gray-900 dark:text-white">
+            <Link href="#about" className="text-xl font-bold text-gray-900 dark:text-white hover:text-gray-700 dark:hover:text-gray-300">
               Julian
             </Link>
           </div>
           
           {/* Navigation Links */}
-          <div className="flex-1 flex justify-center">
-            <div className="flex items-center space-x-4">
-              <Link href="/" className="px-3 py-2 rounded-md text-sm font-medium text-gray-700 dark:text-gray-300">
+          <div className="md:block">
+            <div className="ml-10 flex items-center space-x-4">
+              <Link href="/" className="px-3 py-2 rounded-md text-sm font-medium text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white">
                 Home
               </Link>
-              <Link href="#projects" className="px-3 py-2 rounded-md text-sm font-medium text-gray-700 dark:text-gray-300">
+              <Link href="#projects" className="px-3 py-2 rounded-md text-sm font-medium text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white">
                 Projects
               </Link>
-              <Link href="#experience" className="px-3 py-2 rounded-md text-sm font-medium text-gray-700 dark:text-gray-300">
+              <Link href="#experience" className="px-3 py-2 rounded-md text-sm font-medium text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white">
                 Experience
               </Link>
-              <Link href="#resume" className="px-3 py-2 rounded-md text-sm font-medium text-gray-700 dark:text-gray-300">
+              <Link href="#resume" className="px-3 py-2 rounded-md text-sm font-medium text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white">
                 Resume
               </Link>
-              <Link href="#contact" className="px-3 py-2 rounded-md text-sm font-medium text-gray-700 dark:text-gray-300">
+              <Link href="#contact" className="px-3 py-2 rounded-md text-sm font-medium text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white">
                 Contact
               </Link>
             </div>
@@ -72,7 +72,7 @@ export default function Navbar() {
           <div className="flex items-center">
             <button
               onClick={toggleDarkMode}
-              className="p-2 rounded-md text-gray-700 dark:text-gray-300 focus:outline-none"
+              className="p-2 rounded-md text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white focus:outline-none"
               aria-label="Toggle dark mode"
             >
               {darkMode ? (

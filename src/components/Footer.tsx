@@ -10,7 +10,7 @@ export default function Footer() {
           <div className="flex space-x-6 mb-4">
             {/* LinkedIn */}
             <a 
-              href="https://linkedin.com/in/yourusername" 
+              href="https://www.linkedin.com/in/julian--chen" 
               target="_blank" 
               rel="noopener noreferrer"
               className="text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-200"
@@ -23,7 +23,7 @@ export default function Footer() {
             
             {/* GitHub */}
             <a 
-              href="https://github.com/yourusername" 
+              href="https://github.com/julianchen24" 
               target="_blank" 
               rel="noopener noreferrer"
               className="text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors duration-200"
@@ -36,7 +36,7 @@ export default function Footer() {
             
             {/* Email */}
             <a 
-              href="mailto:your.email@example.com" 
+              href="mailto:jy24chen@uwaterloo.ca" 
               className="text-gray-600 dark:text-gray-400 hover:text-red-600 dark:hover:text-red-400 transition-colors duration-200"
               aria-label="Email"
             >
@@ -47,7 +47,7 @@ export default function Footer() {
             
             {/* Instagram */}
             <a 
-              href="https://instagram.com/yourusername" 
+              href="https://www.instagram.com/julixn.chxn_/" 
               target="_blank" 
               rel="noopener noreferrer"
               className="text-gray-600 dark:text-gray-400 hover:text-pink-600 dark:hover:text-pink-400 transition-colors duration-200"

@@ -22,6 +22,17 @@ export default function Home() {
 
   // Handle parallax effect on scroll
   useEffect(() => {
+    // Initialize positions
+    const initializeParallax = () => {
+      if (!parallaxRef.current) return;
+      const layers = parallaxRef.current.querySelectorAll("[data-speed]");
+      layers.forEach((layer) => {
+        // Initialize all layers with translateY(0) to make them visible from the start
+        (layer as HTMLElement).style.transform = `translateY(0px)`;
+      });
+    };
+    
+    // Handle scroll events
     const handleScroll = () => {
       if (!parallaxRef.current) return;
       
@@ -32,11 +43,16 @@ export default function Home() {
       
       layers.forEach((layer) => {
         const speed = parseFloat(layer.getAttribute("data-speed") || "0");
-        const yPos = -(scrollY * speed);
+        // Use positive translation for scroll down effect
+        const yPos = scrollY * speed;
         (layer as HTMLElement).style.transform = `translateY(${yPos}px)`;
       });
     };
 
+    // Initialize on component mount
+    initializeParallax();
+    
+    // Add scroll event listener
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
@@ -49,7 +65,7 @@ export default function Home() {
           {/* Sky Layer */}
           <div 
             className="absolute inset-0"
-            data-speed="0.1"
+            data-speed="0.05"
             style={{
               background: "linear-gradient(to bottom, #83AEE2, #B2D0F0)",
               zIndex: 1
@@ -57,14 +73,14 @@ export default function Home() {
           />
           
           {/* Stars Layer */}
-          <Stars speed={0.15} zIndex={2} />
+          <Stars speed={0.1} zIndex={2} />
           
           {/* Moon Layer */}
-          <Moon speed={0.2} zIndex={3} />
+          <Moon speed={0.08} zIndex={3} />
           
           {/* Mountain Layers - From back to front */}
           <ParallaxLayer speed={0.3} zIndex={4}>
-            <div className="absolute inset-x-0 bottom-[20vh]">
+            <div className="absolute inset-0">
               <Mountain
                 color="#395C8F"
                 peakPosition={0.15}
@@ -75,8 +91,8 @@ export default function Home() {
             </div>
           </ParallaxLayer>
           
-          <ParallaxLayer speed={0.35} zIndex={5}>
-            <div className="absolute inset-x-0 bottom-[20vh]">
+          <ParallaxLayer speed={0.25} zIndex={5}>
+            <div className="absolute inset-0">
               <Mountain
                 color="#4372A5"
                 peakPosition={0.30}
@@ -87,8 +103,8 @@ export default function Home() {
             </div>
           </ParallaxLayer>
           
-          <ParallaxLayer speed={0.45} zIndex={7}>
-            <div className="absolute inset-x-0 bottom-[20vh]">
+          <ParallaxLayer speed={0.15} zIndex={7}>
+            <div className="absolute inset-0">
               <Mountain
                 color="#4D7CB6"
                 peakPosition={0.50}
@@ -99,8 +115,8 @@ export default function Home() {
             </div>
           </ParallaxLayer>
           
-          <ParallaxLayer speed={0.4} zIndex={6}>
-            <div className="absolute inset-x-0 bottom-[20vh]">
+          <ParallaxLayer speed={0.2} zIndex={6}>
+            <div className="absolute inset-0">
               <Mountain
                 color="#3F6998"
                 peakPosition={0.70}
@@ -112,7 +128,7 @@ export default function Home() {
           </ParallaxLayer>
           
           <ParallaxLayer speed={0.3} zIndex={4}>
-            <div className="absolute inset-x-0 bottom-[20vh]">
+            <div className="absolute inset-0">
               <Mountain
                 color="#446B9C"
                 peakPosition={0.85}
@@ -130,7 +146,7 @@ export default function Home() {
               backgroundColor: "#365B8C",
               zIndex: 8
             }}
-            data-speed="0.05"
+            data-speed="0"
           >
             <WaterWaves />
           </div>
@@ -267,19 +283,21 @@ function Mountain({ color, peakPosition, height, width, zIndex }: MountainProps)
   const peakPercent = peakPosition * 100;
   const rightPercent = rightEdge * 100;
   
-  // SVG height based on mountain height (percentage of viewport height)
-  const svgHeight = height * 100;
+  // SVG height needs to be sufficient to show the entire mountain
+  // Use a fixed height based on the peak height parameter
+  const svgHeight = 100; // Use full height
+  const peakY = 100 - (height * 100); // Convert height ratio to y-coordinate from bottom
   
   return (
-    <div className="absolute inset-x-0 w-full" style={{ zIndex }}>
+    <div className="absolute inset-x-0 bottom-0 w-full h-full" style={{ zIndex }}>
       <svg 
-        viewBox={`0 0 100 ${svgHeight}`} 
+        viewBox={`0 0 100 100`} 
         preserveAspectRatio="none" 
         className="w-full h-full"
         style={{ display: 'block' }}
       >
         <polygon 
-          points={`${leftPercent},${svgHeight} ${peakPercent},0 ${rightPercent},${svgHeight}`} 
+          points={`${leftPercent},100 ${peakPercent},${peakY} ${rightPercent},100`} 
           fill={color} 
         />
       </svg>

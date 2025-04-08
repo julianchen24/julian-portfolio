@@ -50,29 +50,51 @@ export default function Navbar() {
           {/* Navigation Links */}
           <div className="md:block">
             <div className="ml-10 flex items-center space-x-4">
-              <Link href="/" className="px-3 py-2 rounded-md text-sm font-medium text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white">
+              <Link href="/" className="px-3 py-2 rounded-md text-lg font-medium text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white">
                 Home
               </Link>
-              <Link href="/projects" className="px-3 py-2 rounded-md text-sm font-medium text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white">
+              <Link href="/projects" className="px-3 py-2 rounded-md text-lg font-medium text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white">
                 Projects
               </Link>
-              <Link href="/experience" className="px-3 py-2 rounded-md text-sm font-medium text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white">
+              <Link href="/experience" className="px-3 py-2 rounded-md text-lg font-medium text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white">
                 Experience
               </Link>
-              <Link href="/gallery" className="px-3 py-2 rounded-md text-sm font-medium text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white">
+              <Link href="/gallery" className="px-3 py-2 rounded-md text-lg font-medium text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white">
                 Gallery
               </Link>
+
+              {/* GitHub */}
+              <a
+                href="https://github.com/julianchen24"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="px-3 py-2 rounded-md flex items-center gap-2 text-lg font-medium text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white transition-colors duration-200"
+                aria-label="GitHub"
+              >
+                <span>GitHub</span>
+                <svg
+                  className="h-5 w-5"
+                  fill="currentColor"
+                  viewBox="0 0 24 24"
+                  aria-hidden="true"
+                >
+                  <path
+                    fillRule="evenodd"
+                    d="M12 2C6.48 2 2 6.58 2 12.26c0 4.5 2.87 8.32 6.84 9.67.5.1.68-.22.68-.48 0-.24-.01-.87-.01-1.71-2.78.62-3.37-1.36-3.37-1.36-.46-1.2-1.12-1.52-1.12-1.52-.91-.64.07-.63.07-.63 1 .07 1.53 1.05 1.53 1.05.9 1.57 2.36 1.12 2.94.86.09-.67.35-1.12.63-1.38-2.22-.26-4.56-1.14-4.56-5.08 0-1.12.39-2.03 1.03-2.74-.1-.26-.45-1.3.1-2.7 0 0 .84-.28 2.75 1.05a9.38 9.38 0 0 1 2.5-.34c.85 0 1.7.11 2.5.34 1.91-1.33 2.75-1.05 2.75-1.05.55 1.4.2 2.44.1 2.7.64.71 1.03 1.62 1.03 2.74 0 3.95-2.34 4.82-4.57 5.07.36.31.68.92.68 1.85 0 1.34-.01 2.42-.01 2.75 0 .27.18.59.69.48A10.02 10.02 0 0 0 22 12.26C22 6.58 17.52 2 12 2Z"
+                    clipRule="evenodd"
+                  />
+                </svg>
+              </a>
+              
               <a 
                 href="https://drive.google.com/file/d/1FbjZrUj9J0fUzzxyrwgCoRruT6dAkCAP/view?usp=sharing" 
                 target="_blank" 
                 rel="noopener noreferrer" 
-                className="px-3 py-2 rounded-md text-sm font-medium text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white"
+                className="px-3 py-2 rounded-md text-lg font-medium text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white"
               >
                 Resume
               </a>
-              <Link href="#contact" className="px-3 py-2 rounded-md text-sm font-medium text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white">
-                Contact
-              </Link>
+              
             </div>
           </div>
           

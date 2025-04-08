@@ -123,7 +123,7 @@ export default function Home() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-8">About Me</h2>
           <p className="text-lg text-gray-700 dark:text-gray-300 mb-12">
-            Welcome to my portfolio! I&apos;m a passionate developer with expertise in web development and design.
+            Welcome to my portfolio! I am a passionate developer with expertise in web development and design.
             This is a placeholder for your about section. You can add more details about yourself, your skills,
             and your experience here.
           </p>

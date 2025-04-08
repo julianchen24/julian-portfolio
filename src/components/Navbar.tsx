@@ -59,6 +59,9 @@ export default function Navbar() {
               <Link href="/experience" className="px-3 py-2 rounded-md text-sm font-medium text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white">
                 Experience
               </Link>
+              <Link href="/gallery" className="px-3 py-2 rounded-md text-sm font-medium text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white">
+                Gallery
+              </Link>
               <Link href="#resume" className="px-3 py-2 rounded-md text-sm font-medium text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white">
                 Resume
               </Link>

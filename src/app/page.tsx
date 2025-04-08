@@ -1,23 +1,50 @@
 "use client";
 
 import { useEffect, useRef } from "react";
+import Card from "../components/Card";
 
 export default function Home() {
   const parallaxRef = useRef<HTMLDivElement>(null);
 
-  // Handle parallax effect on scroll
+  // Handle parallax effect on scroll with specific speeds for mountain layers
   useEffect(() => {
     const handleScroll = () => {
       if (!parallaxRef.current) return;
       
       const scrollY = window.scrollY;
-      const layers = parallaxRef.current.querySelectorAll(".parallax-layer");
       
-      layers.forEach((layer, index) => {
+      // Get all general parallax layers (sky, stars, moon, water)
+      const generalLayers = parallaxRef.current.querySelectorAll(".parallax-layer");
+      
+      // Apply general parallax effect to non-mountain layers
+      generalLayers.forEach((layer, index) => {
         const speed = (index + 1) * 0.2;
         const yPos = -(scrollY * speed);
         (layer as HTMLElement).style.transform = `translateY(${yPos}px)`;
       });
+      
+      // Apply specific speeds to mountain layers according to specifications
+      const backMountains = parallaxRef.current.querySelector(".back-mountains");
+      const midMountains = parallaxRef.current.querySelector(".mid-mountains");
+      const frontMountains = parallaxRef.current.querySelector(".front-mountains");
+      
+      if (backMountains) {
+        // Back Mountains: 5-10% of scroll speed
+        const backSpeed = 0.08; // 8% of scroll speed
+        (backMountains as HTMLElement).style.transform = `translateY(${-(scrollY * backSpeed)}px)`;
+      }
+      
+      if (midMountains) {
+        // Mid Mountains: 15-20% of scroll speed
+        const midSpeed = 0.18; // 18% of scroll speed
+        (midMountains as HTMLElement).style.transform = `translateY(${-(scrollY * midSpeed)}px)`;
+      }
+      
+      if (frontMountains) {
+        // Front Mountains: 25-30% of scroll speed
+        const frontSpeed = 0.28; // 28% of scroll speed
+        (frontMountains as HTMLElement).style.transform = `translateY(${-(scrollY * frontSpeed)}px)`;
+      }
     };
 
     window.addEventListener("scroll", handleScroll);
@@ -47,19 +74,19 @@ export default function Home() {
             <Moon />
           </div>
           
-          {/* Back Mountains Layer */}
-          <div className="parallax-layer absolute bottom-[30vh] inset-x-0 h-[450px] z-10">
-            <Mountains color="#668DCA" height={40} useBezier={true} />
+          {/* Back Mountains Layer - Slow movement (5-10% of scroll speed) */}
+          <div className="back-mountains absolute bottom-[30vh] inset-x-0 h-[800px] z-10">
+            <Mountains color="#668DCA" height={40} />
           </div>
           
-          {/* Mid Mountains Layer */}
-          <div className="parallax-layer absolute bottom-[30vh] inset-x-0 h-[300px] z-20">
-            <Mountains color="#4D73B8" height={45} useBezier={true} />
+          {/* Mid Mountains Layer - Moderate movement (15-20% of scroll speed) */}
+          <div className="mid-mountains absolute bottom-[30vh] inset-x-0 h-[475px] z-20">
+            <Mountains color="#4D73B8" height={45} />
           </div>
           
-          {/* Front Mountains Layer */}
-          <div className="parallax-layer absolute bottom-[30vh] inset-x-0 h-[300px] z-30">
-            <Mountains color="#4165AA" height={50} useBezier={true} />
+          {/* Front Mountains Layer - Fast movement (25-30% of scroll speed) */}
+          <div className="front-mountains absolute bottom-[30vh] inset-x-0 h-[300px] z-30">
+            <Mountains color="#4165AA" height={50} />
           </div>
           
           {/* Water Layer */}
@@ -95,11 +122,21 @@ export default function Home() {
       <section id="about" className="min-h-screen bg-white dark:bg-gray-900 py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-8">About Me</h2>
-          <p className="text-lg text-gray-700 dark:text-gray-300">
+          <p className="text-lg text-gray-700 dark:text-gray-300 mb-12">
             Welcome to my portfolio! I&apos;m a passionate developer with expertise in web development and design.
             This is a placeholder for your about section. You can add more details about yourself, your skills,
             and your experience here.
           </p>
+          
+          {/* Cards Section */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-12">
+            <Card title="Experiences" targetPath="/experience">
+              Click to view my professional journey and skills
+            </Card>
+            <Card title="Projects" targetPath="/projects">
+              Explore the projects I have worked on
+            </Card>
+          </div>
         </div>
       </section>
     </>
@@ -155,64 +192,79 @@ function Moon() {
 }
 
 // Mountains Component
-function Mountains({ color, height, useBezier = false }: { color: string; height: number; useBezier?: boolean }) {
-  // Generate a mountain silhouette using SVG with optional Bézier curves
-  const generatePath = () => {
+function Mountains({ color, height }: { color: string; height: number }) {
+  // Create triangular mountain peaks with snowcaps
+  const generateMountains = () => {
     const width = 100; // 100%
+    const numPeaks = 5; // Five mountain peaks as specified
     
-    if (useBezier) {
-      // Create smoother mountain silhouette using Bézier curves
-      const segments = 5;
-      let path = `M0,${height} `;
+    // Simple seedable random function for consistent randomness
+    const seededRandom = (function() {
+      const seed = color.charCodeAt(1) * height; // Use color and height as seed
+      let currentSeed = seed;
       
-      // Starting control point
-      let prevX = 0;
-      let prevY = height;
+      return function() {
+        currentSeed = (currentSeed * 9301 + 49297) % 233280;
+        return currentSeed / 233280;
+      };
+    })();
+    
+    // Generate mountain peaks
+    const peaks = [];
+    const snowcaps = [];
+    
+    // Calculate segment width
+    const segmentWidth = width / numPeaks;
+    
+    // Generate each peak
+    for (let i = 0; i < numPeaks; i++) {
+      // Calculate peak position
+      const peakCenterX = segmentWidth * (i + 0.5);
       
-      // Generate peaks with Bézier curves for smoother silhouettes
-      for (let i = 1; i <= segments; i++) {
-        const x = (width / segments) * i;
-        // Create higher peaks that extend further up
-        const peakHeight = Math.random() * (height * 0.6) + (height * 0.2);
-        const y = height - peakHeight;
-        
-        // Control points for the curve
-        const cp1x = prevX + (x - prevX) / 3;
-        const cp1y = prevY - Math.random() * (height * 0.3);
-        const cp2x = x - (x - prevX) / 3;
-        const cp2y = y + Math.random() * (height * 0.3);
-        
-        // Add cubic Bézier curve
-        path += `C ${cp1x},${cp1y} ${cp2x},${cp2y} ${x},${y} `;
-        
-        prevX = x;
-        prevY = y;
-      }
+      // Randomize peak height (between 50-90% of max height)
+      const peakHeight = height * (0.5 + seededRandom() * 0.4);
+      const peakY = height - peakHeight;
       
-      // Close the path
-      path += `L ${width},${height} Z`;
-      return path;
-    } else {
-      // Original implementation with linear segments
-      const points = [];
-      const segments = 10;
+      // Calculate base points (slightly randomized)
+      const leftBaseOffset = seededRandom() * 0.3 * segmentWidth;
+      const rightBaseOffset = seededRandom() * 0.3 * segmentWidth;
       
-      // Start at bottom left
-      points.push(`0,${height}`);
+      const leftBaseX = Math.max(0, peakCenterX - (segmentWidth * 0.5) + leftBaseOffset);
+      const rightBaseX = Math.min(width, peakCenterX + (segmentWidth * 0.5) - rightBaseOffset);
       
-      // Generate random peaks
-      for (let i = 0; i <= segments; i++) {
-        const x = (width / segments) * i;
-        const y = Math.sin(i * Math.PI / (segments / 2)) * (height / 2) + Math.random() * (height / 4);
-        points.push(`${x},${y}`);
-      }
+      // Create mountain polygon points
+      const mountainPoints = `${leftBaseX},${height} ${peakCenterX},${peakY} ${rightBaseX},${height}`;
+      peaks.push(
+        <polygon 
+          key={`peak-${i}`} 
+          points={mountainPoints} 
+          fill={color} 
+        />
+      );
       
-      // End at bottom right
-      points.push(`${width},${height}`);
+      // Create snowcap (smaller triangle on top of the peak)
+      const snowCapWidth = (rightBaseX - leftBaseX) * 0.4; // Snowcap is 40% of the peak width
+      const snowCapHeight = peakHeight * 0.15; // Snowcap is 15% of the peak height
       
-      return `M${points.join(' L')} Z`;
+      const snowCapPoints = `
+        ${peakCenterX - snowCapWidth/2},${peakY + snowCapHeight} 
+        ${peakCenterX},${peakY} 
+        ${peakCenterX + snowCapWidth/2},${peakY + snowCapHeight}
+      `;
+      
+      snowcaps.push(
+        <polygon 
+          key={`snow-${i}`} 
+          points={snowCapPoints} 
+          fill="#FFFFFF" 
+        />
+      );
     }
+    
+    return { peaks, snowcaps };
   };
+  
+  const { peaks, snowcaps } = generateMountains();
 
   return (
     <svg 
@@ -220,10 +272,11 @@ function Mountains({ color, height, useBezier = false }: { color: string; height
       preserveAspectRatio="none" 
       className="w-full h-full"
     >
-      <path 
-        d={generatePath()} 
-        fill={color} 
-      />
+      {/* Render mountain peaks */}
+      {peaks}
+      
+      {/* Render snowcaps */}
+      {snowcaps}
     </svg>
   );
 }

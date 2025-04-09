@@ -335,21 +335,36 @@ function WaterWaves() {
       {/* Base water */}
       <div className="absolute inset-0 bg-[#365B8C]"></div>
       
-      {/* Wave lines as subtle overlays */}
+      {/* Wave SVGs - Creating multiple SVG paths for the wave effect */}
       {Array.from({ length: 6 }).map((_, i) => {
-        const top = i * 16 + 5; // Distribute waves evenly
+        // Calculate vertical position for each wave
+        const top = 10 + i * 15; // Start at 10% and space evenly
         
         return (
-          <div 
+          <svg 
             key={i}
-            className="absolute w-full h-1 opacity-30"
+            className="absolute left-0 w-full h-8"
             style={{
               top: `${top}%`,
-              backgroundColor: "#4E7DB7",
-              borderRadius: "50%",
-              transform: "scaleX(1.2)",
             }}
-          />
+            viewBox="0 0 1440 24" 
+            preserveAspectRatio="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path 
+              d={`
+                M0,12 
+                C120,18 240,6 360,12 
+                C480,18 600,6 720,12 
+                C840,18 960,6 1080,12 
+                C1200,18 1320,6 1440,12
+              `}
+              stroke="#4E7DB7"
+              strokeWidth="2"
+              strokeOpacity="0.3"
+              fill="none"
+            />
+          </svg>
         );
       })}
     </div>

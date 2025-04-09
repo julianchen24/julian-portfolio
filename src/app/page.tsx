@@ -65,7 +65,7 @@ export default function Home() {
           {/* Sky Layer */}
           <div 
             className="absolute inset-0"
-            data-speed="0.05"
+            data-speed="0.1"
             style={{
               background: "linear-gradient(to bottom, #83AEE2, #B2D0F0)",
               zIndex: 1
@@ -73,67 +73,93 @@ export default function Home() {
           />
           
           {/* Stars Layer */}
-          <Stars speed={0.1} zIndex={2} />
+          <Stars speed={0.2} zIndex={2} />
           
           {/* Moon Layer */}
-          <Moon speed={0.08} zIndex={3} />
+          <Moon speed={0.15} zIndex={3} />
           
           {/* Mountain Layers - From back to front */}
-          <ParallaxLayer speed={0.3} zIndex={4}>
+          {/* Extra small mountain on far left */}
+          <ParallaxLayer speed={0.5} zIndex={3}>
             <div className="absolute inset-0">
               <Mountain
-                color="#395C8F"
-                peakPosition={0.15}
-                height={0.65}
-                width={0.3}
+                color="#40628F"
+                peakPosition={0}
+                height={0.55}
+                width={0.4}
                 zIndex={1}
               />
             </div>
           </ParallaxLayer>
           
-          <ParallaxLayer speed={0.25} zIndex={5}>
+          <ParallaxLayer speed={0.6} zIndex={4}>
+            <div className="absolute inset-0">
+              <Mountain
+                color="#395C8F"
+                peakPosition={0.15}
+                height={0.65}
+                width={0.4}
+                zIndex={1}
+              />
+            </div>
+          </ParallaxLayer>
+          
+          <ParallaxLayer speed={0.5} zIndex={5}>
             <div className="absolute inset-0">
               <Mountain
                 color="#4372A5"
                 peakPosition={0.30}
-                height={0.70}
-                width={0.35}
+                height={0.60}
+                width={0.45}
                 zIndex={2}
               />
             </div>
           </ParallaxLayer>
           
-          <ParallaxLayer speed={0.15} zIndex={7}>
+          <ParallaxLayer speed={0.5} zIndex={7}>
             <div className="absolute inset-0">
               <Mountain
                 color="#4D7CB6"
                 peakPosition={0.50}
-                height={0.80}
-                width={0.45}
+                height={0.650}
+                width={0.35}
                 zIndex={4}
               />
             </div>
           </ParallaxLayer>
           
-          <ParallaxLayer speed={0.2} zIndex={6}>
+          <ParallaxLayer speed={0.5} zIndex={6}>
             <div className="absolute inset-0">
               <Mountain
                 color="#3F6998"
                 peakPosition={0.70}
-                height={0.65}
-                width={0.35}
+                height={0.63}
+                width={0.45}
                 zIndex={3}
               />
             </div>
           </ParallaxLayer>
           
-          <ParallaxLayer speed={0.3} zIndex={4}>
+          <ParallaxLayer speed={0.6} zIndex={4}>
             <div className="absolute inset-0">
               <Mountain
                 color="#446B9C"
                 peakPosition={0.85}
-                height={0.65}
-                width={0.3}
+                height={0.56}
+                width={0.4}
+                zIndex={1}
+              />
+            </div>
+          </ParallaxLayer>
+          
+          {/* Extra small mountain on far right */}
+          <ParallaxLayer speed={0.5} zIndex={3}>
+            <div className="absolute inset-0">
+              <Mountain
+                color="#40628F"
+                peakPosition={1}
+                height={0.55}
+                width={0.8}
                 zIndex={1}
               />
             </div>
@@ -160,9 +186,9 @@ export default function Home() {
         </div>
         
         {/* Scroll Indicator */}
-        <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce" style={{ zIndex: 50 }}>
+        <div className="absolute bottom-32 left-1/2 transform -translate-x-1/2 animate-bounce" style={{ zIndex: 50 }}>
           <svg 
-            className="w-6 h-6 text-white" 
+            className="w-16 h-16 text-white drop-shadow-lg" 
             fill="none" 
             strokeLinecap="round" 
             strokeLinejoin="round" 
@@ -244,39 +270,37 @@ function Stars({ speed, zIndex }: { speed: number; zIndex: number }) {
   );
 }
 
-// Moon Component
+// Moon Component using CSS box-shadow technique
 function Moon({ speed, zIndex }: { speed: number; zIndex: number }) {
   return (
-    <div 
-      className="absolute" 
-      style={{ 
-        top: "15%", 
-        left: "15%",
-        zIndex 
+    <div
+      className="absolute"
+      style={{
+        top: "6%",
+        left: "10%",
+        zIndex
       }}
       data-speed={speed}
     >
-      <div className="relative">
-        {/* Main moon circle */}
-        <div className="w-16 h-16 md:w-24 md:h-24 bg-white rounded-full"></div>
-        
-        {/* Shadow overlay to create crescent */}
-        <div 
-          className="absolute top-0 left-0 w-16 h-16 md:w-24 md:h-24 rounded-full"
-          style={{
-            background: "radial-gradient(circle at 30% 50%, rgba(0,0,0,0) 40%, rgba(0,0,0,0.5) 41%, rgba(0,0,0,1) 60%)",
-          }}
-        ></div>
-      </div>
+      {/* CSS-based crescent moon using box-shadow */}
+      <div 
+        style={{
+          height: "150px",
+          width: "150px",
+          backgroundColor: "transparent",
+          boxShadow: "-20px 20px 0 15px white",
+          borderRadius: "50%"
+        }}
+      ></div>
     </div>
   );
 }
 
 // Mountain Component
 function Mountain({ color, peakPosition, height, width, zIndex }: MountainProps) {
-  // Create triangular mountain peak
-  const leftEdge = Math.max(0, peakPosition - width/2);
-  const rightEdge = Math.min(1, peakPosition + width/2);
+  // Create triangular mountain peak - increase width to make mountains wider and connected
+  const leftEdge = Math.max(0, peakPosition - width*0.9);
+  const rightEdge = Math.min(1, peakPosition + width*0.9);
   
   // Convert to percentage for SVG
   const leftPercent = leftEdge * 100;
@@ -284,7 +308,6 @@ function Mountain({ color, peakPosition, height, width, zIndex }: MountainProps)
   const rightPercent = rightEdge * 100;
   
   // SVG height needs to be sufficient to show the entire mountain
-  // Use a fixed height based on the peak height parameter
   const svgHeight = 100; // Use full height
   const peakY = 100 - (height * 100); // Convert height ratio to y-coordinate from bottom
   

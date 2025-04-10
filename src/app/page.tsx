@@ -17,12 +17,6 @@ interface ParallaxProps {
   children: React.ReactNode;
 }
 
-interface StarAnimationParams {
-  maxDistFromCursor: number;
-  dotsSpeed: number;
-  backgroundSpeed: number;
-}
-
 export default function Home() {
   const parallaxRef = useRef<HTMLDivElement>(null);
   const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -65,7 +59,7 @@ export default function Home() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // Star animation effect from paste-2.txt
+  // Star animation effect
   useEffect(() => {
     // Make sure we're on the client side
     if (typeof window === 'undefined') return;
@@ -80,18 +74,9 @@ export default function Home() {
       const ctx = canvas.getContext('2d');
       if (!ctx) return;
 
-      console.log("Canvas initialized");
-
       // Set canvas size to match window
       canvas.width = window.innerWidth;
       canvas.height = window.innerHeight;
-
-      // Animation parameters
-      const params = {
-        maxDistFromCursor: 50,
-        dotsSpeed: 0,
-        backgroundSpeed: 0
-      };
 
       // Arrays to store stars and dots
       const stars: any[] = [];
@@ -117,7 +102,7 @@ export default function Home() {
           
           // Method to move the star
           move: function() {
-            this.y -= 0.15 + params.backgroundSpeed / 100;
+            this.y -= 0.15;
             if (this.y <= -10) this.y = canvas.height + 10;
             this.draw();
           }
@@ -154,8 +139,8 @@ export default function Home() {
         if (dots.length > 100) return;
         
         // Random position variations around mouse
-        const xVariation = (Math.random() > 0.5 ? -1 : 1) * Math.floor(Math.random() * params.maxDistFromCursor);
-        const yVariation = (Math.random() > 0.5 ? -1 : 1) * Math.floor(Math.random() * params.maxDistFromCursor);
+        const xVariation = (Math.random() > 0.5 ? -1 : 1) * Math.floor(Math.random() * 50);
+        const yVariation = (Math.random() > 0.5 ? -1 : 1) * Math.floor(Math.random() * 50);
         
         dots.push({
           x: mouseX + xVariation,
@@ -182,8 +167,8 @@ export default function Home() {
             this.alpha -= this.alphaReduction;
             
             // Move dot based on direction
-            this.x += Math.cos(this.direction * Math.PI / 180) * (this.speed + params.dotsSpeed / 100);
-            this.y += Math.sin(this.direction * Math.PI / 180) * (this.speed + params.dotsSpeed / 100);
+            this.x += Math.cos(this.direction * Math.PI / 180) * this.speed;
+            this.y += Math.sin(this.direction * Math.PI / 180) * this.speed;
             
             // Draw the dot
             this.draw();
@@ -280,7 +265,7 @@ export default function Home() {
     <>
       {/* Parallax Landing Section */}
       <section className="relative h-screen overflow-hidden">
-        {/* Canvas for star animation (absolute positioned over everything) */}
+        {/* Canvas for star animation */}
         <canvas 
           ref={canvasRef}
           className="absolute top-0 left-0 w-full h-full"
@@ -298,7 +283,7 @@ export default function Home() {
             }}
           />
           
-          {/* Stars Layer (keeping your existing stars as well) */}
+          {/* Stars Layer */}
           <Stars speed={0.2} zIndex={2} />
           
           {/* Moon Layer */}
@@ -427,7 +412,7 @@ export default function Home() {
         </div>
       </section>
       
-      {/* About Section (for smooth transition) */}
+      {/* About Section */}
       <section id="about" className="min-h-screen bg-white dark:bg-gray-900 py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-8">About Me</h2>
@@ -519,9 +504,6 @@ function Stars({ speed, zIndex }: { speed: number; zIndex: number }) {
     const baseOpacity = pseudoRandom(4) * 0.5 + 0.3;
     
     // Determine which stars get the burst effect
-    // Make about 15% of stars have ray burst (the * effect)
-    // Make about 20% have regular burst
-    // The rest have simple twinkle
     const randValue = pseudoRandom(5);
     const animationType = randValue < 0.15 
       ? "star-ray-burst" 
@@ -564,7 +546,7 @@ function Stars({ speed, zIndex }: { speed: number; zIndex: number }) {
   );
 }
 
-// Moon Component using CSS box-shadow technique
+// Moon Component
 function Moon({ speed, zIndex }: { speed: number; zIndex: number }) {
   return (
     <div
@@ -601,9 +583,8 @@ function Mountain({ color, peakPosition, height, width, zIndex }: MountainProps)
   const peakPercent = peakPosition * 100;
   const rightPercent = rightEdge * 100;
   
-  // SVG height needs to be sufficient to show the entire mountain
-  const svgHeight = 100; // Use full height
-  const peakY = 100 - (height * 100); // Convert height ratio to y-coordinate from bottom
+  // Convert height ratio to y-coordinate from bottom
+  const peakY = 100 - (height * 100);
   
   return (
     <div className="absolute inset-x-0 bottom-0 w-full h-full" style={{ zIndex }}>
@@ -629,7 +610,7 @@ function WaterWaves() {
       {/* Base water */}
       <div className="absolute inset-0 bg-[#365B8C]"></div>
       
-      {/* Wave SVGs - Creating multiple SVG paths for the wave effect */}
+      {/* Wave SVGs */}
       {Array.from({ length: 6 }).map((_, i) => {
         // Calculate vertical position for each wave
         const top = 10 + i * 15; // Start at 10% and space evenly
@@ -653,7 +634,6 @@ function WaterWaves() {
                 C840,40 960,4 1080,12 
                 C1200,4 1320,40 1440,12
               `}
-
               stroke="#4E7DB7"
               strokeWidth="2"
               strokeOpacity="0.3"

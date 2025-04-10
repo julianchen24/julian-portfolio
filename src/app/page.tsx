@@ -21,48 +21,28 @@ export default function Home() {
   const parallaxRef = useRef<HTMLDivElement>(null);
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const aboutSectionRef = useRef<HTMLElement>(null);
+  const containerRef = useRef<HTMLDivElement>(null);
+  const heroSectionRef = useRef<HTMLElement>(null);
   const [isMounted, setIsMounted] = useState(false);
-  const [hasScrolledToAbout, setHasScrolledToAbout] = useState(false);
-  const [isScrolling, setIsScrolling] = useState(false);
-
-  // Scroll snap effect
+  
+  // Handle hover on hero section to snap back
   useEffect(() => {
     if (typeof window === 'undefined') return;
-
-    const handleScroll = () => {
-      // Skip if we're already handling a scroll or if we've already scrolled to About
-      if (isScrolling) return;
-
-      const scrollY = window.scrollY;
-      
-      // If we're at the top section and scroll down slightly (more than 50px)
-      if (!hasScrolledToAbout && scrollY > 50 && scrollY < window.innerHeight) {
-        setIsScrolling(true);
-        setHasScrolledToAbout(true);
-        
-        // Scroll to the About section
-        if (aboutSectionRef.current) {
-          window.scrollTo({
-            top: aboutSectionRef.current.offsetTop,
-            behavior: 'smooth'
-          });
-        }
-        
-        // Reset scrolling state after animation completes
-        setTimeout(() => {
-          setIsScrolling(false);
-        }, 1000); // Adjust timing to match scroll animation duration
-      }
-      
-      // If we're below the fold and scroll back to top
-      else if (hasScrolledToAbout && scrollY < 10) {
-        setHasScrolledToAbout(false);
-      }
+    
+    const heroSection = heroSectionRef.current;
+    if (!heroSection) return;
+    
+    const handleHover = () => {
+      // Snap back to hero section when hovering
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
     };
     
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, [hasScrolledToAbout, isScrolling]);
+    heroSection.addEventListener('mouseenter', handleHover);
+    return () => heroSection.removeEventListener('mouseenter', handleHover);
+  }, []);
 
   // Handle parallax effect on scroll
   useEffect(() => {
@@ -326,9 +306,17 @@ export default function Home() {
   }, [isMounted]);
 
   return (
-    <>
+    <div 
+      ref={containerRef} 
+      className="h-screen overflow-y-auto snap-y snap-mandatory"
+      style={{ scrollSnapType: 'y mandatory' }}
+    >
       {/* Parallax Landing Section */}
-      <section className="relative h-screen overflow-hidden">
+      <section 
+        ref={heroSectionRef}
+        className="relative h-screen overflow-hidden snap-start snap-always"
+        style={{ scrollSnapAlign: 'start' }}
+      >
         {/* Canvas for star animation */}
         <canvas 
           ref={canvasRef}
@@ -480,7 +468,8 @@ export default function Home() {
       <section 
         ref={aboutSectionRef}
         id="about" 
-        className="h-screen bg-white dark:bg-gray-900 py-20 flex items-center"
+        className="h-screen bg-white dark:bg-gray-900 py-20 flex items-center snap-start snap-always"
+        style={{ scrollSnapAlign: 'start' }}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-8">About Me</h2>
@@ -491,7 +480,7 @@ export default function Home() {
           </p>
         </div>
       </section>
-    </>
+    </div>
   );
 }
 

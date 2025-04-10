@@ -5,6 +5,7 @@ import Link from "next/link";
 
 export default function Navbar() {
   const [darkMode, setDarkMode] = useState(false);
+  const [isAtTop, setIsAtTop] = useState(true);
 
   // Initialize dark mode based on system preference or localStorage
   useEffect(() => {
@@ -18,6 +19,26 @@ export default function Navbar() {
       const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
       setDarkMode(prefersDark);
     }
+  }, []);
+
+  // Add scroll event listener to track if page is at top
+  useEffect(() => {
+    const handleScroll = () => {
+      // Check if window exists (client-side only)
+      if (typeof window !== 'undefined') {
+        // Set isAtTop to true when scrollY is 0, false otherwise
+        setIsAtTop(window.scrollY < 10); // Using a small threshold to make detection more reliable
+      }
+    };
+
+    // Set initial state
+    handleScroll();
+    
+    // Add event listener
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    
+    // Clean up
+    return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
   // Update the DOM when dark mode changes
@@ -37,29 +58,71 @@ export default function Navbar() {
   };
 
   return (
-    <nav className="sticky top-0 z-10 bg-white dark:bg-gray-900 shadow-md transition-colors duration-200">
+    <nav 
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+        isAtTop 
+          ? 'bg-transparent' 
+          : 'bg-white/95 dark:bg-gray-900/95 backdrop-blur-sm shadow-md'
+      }`}
+      style={{ backgroundColor: isAtTop ? 'transparent' : undefined }}
+    >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between h-16 items-center">
           {/* Logo/Brand */}
           <div className="flex-shrink-0">
-            <Link href="/" className="text-xl font-bold text-gray-900 dark:text-white hover:text-gray-700 dark:hover:text-gray-300">
+            <Link 
+              href="/" 
+              className={`text-xl font-bold transition-colors duration-300 ${
+                isAtTop 
+                  ? 'text-white hover:text-gray-200 drop-shadow-[0_1px_2px_rgba(0,0,0,0.8)]'
+                  : 'text-gray-900 dark:text-white hover:text-gray-700 dark:hover:text-gray-300'
+              }`}
+            >
               Julian
             </Link>
           </div>
           
           {/* Navigation Links */}
-          <div className="md:block">
+          <div className="hidden md:block">
             <div className="ml-10 flex items-center space-x-4">
-              <Link href="/" className="px-3 py-2 rounded-md text-lg font-medium text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white">
+              <Link 
+                href="/" 
+                className={`px-3 py-2 rounded-md text-lg font-medium transition-colors duration-300 ${
+                  isAtTop 
+                    ? 'text-white hover:text-gray-200 drop-shadow-[0_1px_2px_rgba(0,0,0,0.8)]'
+                    : 'text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white'
+                }`}
+              >
                 Home
               </Link>
-              <Link href="/projects" className="px-3 py-2 rounded-md text-lg font-medium text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white">
+              <Link 
+                href="/projects" 
+                className={`px-3 py-2 rounded-md text-lg font-medium transition-colors duration-300 ${
+                  isAtTop 
+                    ? 'text-white hover:text-gray-200 drop-shadow-[0_1px_2px_rgba(0,0,0,0.8)]'
+                    : 'text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white'
+                }`}
+              >
                 Projects
               </Link>
-              <Link href="/experience" className="px-3 py-2 rounded-md text-lg font-medium text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white">
+              <Link 
+                href="/experience" 
+                className={`px-3 py-2 rounded-md text-lg font-medium transition-colors duration-300 ${
+                  isAtTop 
+                    ? 'text-white hover:text-gray-200 drop-shadow-[0_1px_2px_rgba(0,0,0,0.8)]'
+                    : 'text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white'
+                }`}
+              >
                 Experience
               </Link>
-              <Link href="/gallery" className="px-3 py-2 rounded-md text-lg font-medium text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white">
+              <Link 
+                href="/gallery" 
+                className={`px-3 py-2 rounded-md text-lg font-medium transition-colors duration-300 ${
+                  isAtTop 
+                    ? 'text-white hover:text-gray-200 drop-shadow-[0_1px_2px_rgba(0,0,0,0.8)]'
+                    : 'text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white'
+                }`}
+              >
                 Gallery
               </Link>
 
@@ -68,7 +131,11 @@ export default function Navbar() {
                 href="https://github.com/julianchen24"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="px-3 py-2 rounded-md flex items-center gap-2 text-lg font-medium text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white transition-colors duration-200"
+                className={`px-3 py-2 rounded-md flex items-center gap-2 text-lg font-medium transition-colors duration-300 ${
+                  isAtTop 
+                    ? 'text-white hover:text-gray-200 drop-shadow-[0_1px_2px_rgba(0,0,0,0.8)]'
+                    : 'text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white'
+                }`}
                 aria-label="GitHub"
               >
                 <span>GitHub</span>
@@ -90,7 +157,11 @@ export default function Navbar() {
                 href="https://drive.google.com/file/d/1FbjZrUj9J0fUzzxyrwgCoRruT6dAkCAP/view?usp=sharing" 
                 target="_blank" 
                 rel="noopener noreferrer" 
-                className="px-3 py-2 rounded-md text-lg font-medium text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white"
+                className={`px-3 py-2 rounded-md text-lg font-medium transition-colors duration-300 ${
+                  isAtTop 
+                    ? 'text-white hover:text-gray-200 drop-shadow-[0_1px_2px_rgba(0,0,0,0.8)]'
+                    : 'text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white'
+                }`}
               >
                 Resume
               </a>
@@ -102,7 +173,11 @@ export default function Navbar() {
           <div className="flex items-center">
             <button
               onClick={toggleDarkMode}
-              className="p-2 rounded-md text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white focus:outline-none"
+              className={`p-2 rounded-md focus:outline-none transition-colors duration-300 ${
+                isAtTop 
+                  ? 'text-white hover:text-gray-200 drop-shadow-[0_1px_2px_rgba(0,0,0,0.8)]'
+                  : 'text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white'
+              }`}
               aria-label="Toggle dark mode"
             >
               {darkMode ? (

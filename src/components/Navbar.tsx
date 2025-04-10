@@ -73,57 +73,57 @@ export default function Navbar() {
         <div className="flex justify-between h-16 items-center">
           {/* Logo/Brand */}
           <div className="flex-shrink-0">
-            <Link 
-              href="/" 
-              className={`text-xl font-bold transition-colors duration-300 ${
-                isAtTop 
-                  ? 'text-white hover:text-gray-200 drop-shadow-[0_1px_2px_rgba(0,0,0,0.8)]'
-                  : 'text-gray-900 dark:text-white hover:text-gray-700 dark:hover:text-gray-300'
-              }`}
-            >
-              Julian
-            </Link>
+          <Link 
+            href="/" 
+            className={`text-xl font-bold transition-all duration-300 ${
+              isAtTop 
+                ? 'text-white hover:scale-110 drop-shadow-[0_1px_2px_rgba(0,0,0,0.8)] hover:text-transparent hover:bg-clip-text hover:bg-gradient-to-b from-white to-[#83AEE2]'
+                : 'text-gray-900 dark:text-white hover:scale-110 hover:text-transparent hover:bg-clip-text hover:bg-gradient-to-b from-white to-[#83AEE2]'
+            }`}
+          >
+            Julian
+          </Link>
           </div>
           
           {/* Navigation Links */}
           <div className="hidden md:block">
             <div className="ml-10 flex items-center space-x-4">
-              <Link 
-                href="/" 
-                className={`px-3 py-2 rounded-md text-lg font-medium transition-colors duration-300 ${
-                  isAtTop 
-                    ? 'text-white hover:text-gray-200 drop-shadow-[0_1px_2px_rgba(0,0,0,0.8)]'
-                    : 'text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white'
-                }`}
-              >
-                Home
-              </Link>
-              <Link 
-                href="/projects" 
-                className={`px-3 py-2 rounded-md text-lg font-medium transition-colors duration-300 ${
-                  isAtTop 
-                    ? 'text-white hover:text-gray-200 drop-shadow-[0_1px_2px_rgba(0,0,0,0.8)]'
-                    : 'text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white'
-                }`}
-              >
-                Projects
-              </Link>
-              <Link 
+            <Link
+              href="/"
+              className={`px-3 py-2 rounded-md text-lg font-medium transition-all duration-300 ${
+                isAtTop
+                  ? 'text-white hover:scale-110 drop-shadow-[0_1px_2px_rgba(0,0,0,0.8)] hover:text-transparent hover:bg-clip-text hover:bg-gradient-to-b from-white to-[#83AEE2]'
+                  : 'text-gray-700 dark:text-gray-300 hover:scale-110 hover:text-transparent hover:bg-clip-text hover:bg-gradient-to-b from-white to-[#83AEE2]'
+              }`}
+            >
+              Home
+            </Link>
+            <Link 
+              href="/projects" 
+              className={`px-3 py-2 rounded-md text-lg font-medium transition-all duration-300 ${
+                isAtTop 
+                  ? 'text-white hover:scale-110 drop-shadow-[0_1px_2px_rgba(0,0,0,0.8)] hover:text-transparent hover:bg-clip-text hover:bg-gradient-to-b from-white to-[#83AEE2]'
+                  : 'text-gray-700 dark:text-gray-300 hover:scale-110 hover:text-transparent hover:bg-clip-text hover:bg-gradient-to-b from-white to-[#83AEE2]'
+              }`}
+            >
+              Projects
+            </Link>
+            <Link 
                 href="/experience" 
-                className={`px-3 py-2 rounded-md text-lg font-medium transition-colors duration-300 ${
+                className={`px-3 py-2 rounded-md text-lg font-medium transition-all duration-300 ${
                   isAtTop 
-                    ? 'text-white hover:text-gray-200 drop-shadow-[0_1px_2px_rgba(0,0,0,0.8)]'
-                    : 'text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white'
+                    ? 'text-white hover:scale-110 drop-shadow-[0_1px_2px_rgba(0,0,0,0.8)] hover:text-transparent hover:bg-clip-text hover:bg-gradient-to-b from-white to-[#83AEE2]'
+                    : 'text-gray-700 dark:text-gray-300 hover:scale-110 hover:text-transparent hover:bg-clip-text hover:bg-gradient-to-b from-white to-[#83AEE2]'
                 }`}
               >
                 Experience
               </Link>
               <Link 
                 href="/gallery" 
-                className={`px-3 py-2 rounded-md text-lg font-medium transition-colors duration-300 ${
+                className={`px-3 py-2 rounded-md text-lg font-medium transition-all duration-300 ${
                   isAtTop 
-                    ? 'text-white hover:text-gray-200 drop-shadow-[0_1px_2px_rgba(0,0,0,0.8)]'
-                    : 'text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white'
+                    ? 'text-white hover:scale-110 drop-shadow-[0_1px_2px_rgba(0,0,0,0.8)] hover:text-transparent hover:bg-clip-text hover:bg-gradient-to-b from-white to-[#83AEE2]'
+                    : 'text-gray-700 dark:text-gray-300 hover:scale-110 hover:text-transparent hover:bg-clip-text hover:bg-gradient-to-b from-white to-[#83AEE2]'
                 }`}
               >
                 Gallery
@@ -134,16 +134,20 @@ export default function Navbar() {
                 href="https://github.com/julianchen24"
                 target="_blank"
                 rel="noopener noreferrer"
-                className={`px-3 py-2 rounded-md flex items-center gap-2 text-lg font-medium transition-colors duration-300 ${
-                  isAtTop 
-                    ? 'text-white hover:text-gray-200 drop-shadow-[0_1px_2px_rgba(0,0,0,0.8)]'
-                    : 'text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white'
+                className={`px-3 py-2 rounded-md flex items-center gap-2 text-lg font-medium transition-all duration-300 group ${
+                  isAtTop
+                    ? 'text-white hover:scale-110 drop-shadow-[0_1px_2px_rgba(0,0,0,0.8)]'
+                    : 'text-gray-700 dark:text-gray-300 hover:scale-110'
                 }`}
                 aria-label="GitHub"
               >
-                <span>GitHub</span>
+                <span className="group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-b from-white to-[#83AEE2]">GitHub</span>
                 <svg
-                  className="h-5 w-5"
+                  className={`h-5 w-5 transition-colors duration-300 ${
+                    isAtTop
+                      ? 'text-white group-hover:text-[#83AEE2]'
+                      : 'text-gray-700 dark:text-gray-300 group-hover:text-[#83AEE2]'
+                  }`}
                   fill="currentColor"
                   viewBox="0 0 24 24"
                   aria-hidden="true"
@@ -160,15 +164,15 @@ export default function Navbar() {
                 href="https://drive.google.com/file/d/1FbjZrUj9J0fUzzxyrwgCoRruT6dAkCAP/view?usp=sharing" 
                 target="_blank" 
                 rel="noopener noreferrer" 
-                className={`px-3 py-2 rounded-md text-lg font-medium transition-colors duration-300 ${
+                className={`px-3 py-2 rounded-md text-lg font-medium transition-all duration-300 ${
                   isAtTop 
-                    ? 'text-white hover:text-gray-200 drop-shadow-[0_1px_2px_rgba(0,0,0,0.8)]'
-                    : 'text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white'
+                    ? 'text-white hover:scale-110 drop-shadow-[0_1px_2px_rgba(0,0,0,0.8)] hover:text-transparent hover:bg-clip-text hover:bg-gradient-to-b from-white to-[#83AEE2]'
+                    : 'text-gray-700 dark:text-gray-300 hover:scale-110 hover:text-transparent hover:bg-clip-text hover:bg-gradient-to-b from-white to-[#83AEE2]'
                 }`}
               >
                 Resume
               </a>
-              
+                            
             </div>
           </div>
           

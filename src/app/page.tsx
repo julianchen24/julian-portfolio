@@ -20,7 +20,49 @@ interface ParallaxProps {
 export default function Home() {
   const parallaxRef = useRef<HTMLDivElement>(null);
   const canvasRef = useRef<HTMLCanvasElement>(null);
+  const aboutSectionRef = useRef<HTMLElement>(null);
   const [isMounted, setIsMounted] = useState(false);
+  const [hasScrolledToAbout, setHasScrolledToAbout] = useState(false);
+  const [isScrolling, setIsScrolling] = useState(false);
+
+  // Scroll snap effect
+  useEffect(() => {
+    if (typeof window === 'undefined') return;
+
+    const handleScroll = () => {
+      // Skip if we're already handling a scroll or if we've already scrolled to About
+      if (isScrolling) return;
+
+      const scrollY = window.scrollY;
+      
+      // If we're at the top section and scroll down slightly (more than 50px)
+      if (!hasScrolledToAbout && scrollY > 50 && scrollY < window.innerHeight) {
+        setIsScrolling(true);
+        setHasScrolledToAbout(true);
+        
+        // Scroll to the About section
+        if (aboutSectionRef.current) {
+          window.scrollTo({
+            top: aboutSectionRef.current.offsetTop,
+            behavior: 'smooth'
+          });
+        }
+        
+        // Reset scrolling state after animation completes
+        setTimeout(() => {
+          setIsScrolling(false);
+        }, 1000); // Adjust timing to match scroll animation duration
+      }
+      
+      // If we're below the fold and scroll back to top
+      else if (hasScrolledToAbout && scrollY < 10) {
+        setHasScrolledToAbout(false);
+      }
+    };
+    
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, [hasScrolledToAbout, isScrolling]);
 
   // Handle parallax effect on scroll
   useEffect(() => {
@@ -78,9 +120,31 @@ export default function Home() {
       canvas.width = window.innerWidth;
       canvas.height = window.innerHeight;
 
+      // Define types for stars and dots
+      interface Star {
+        x: number;
+        y: number;
+        radius: number;
+        alpha: number;
+        draw: () => void;
+        move: () => void;
+      }
+      
+      interface Dot {
+        x: number;
+        y: number;
+        radius: number;
+        alpha: number;
+        alphaReduction: number;
+        speed: number;
+        direction: number;
+        draw: () => void;
+        move: () => void;
+      }
+      
       // Arrays to store stars and dots
-      const stars: any[] = [];
-      const dots: any[] = [];
+      const stars: Star[] = [];
+      const dots: Dot[] = [];
       
       // Initialize stars
       for (let i = 0; i < 80; i++) {
@@ -92,12 +156,12 @@ export default function Home() {
           
           // Method to draw the star
           draw: function() {
-            ctx.fillStyle = `rgba(255, 255, 255, ${this.alpha})`;
-            ctx.shadowBlur = this.radius * 2;
-            ctx.beginPath();
-            ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
-            ctx.closePath();
-            ctx.fill();
+            ctx!.fillStyle = `rgba(255, 255, 255, ${this.alpha})`;
+            ctx!.shadowBlur = this.radius * 2;
+            ctx!.beginPath();
+            ctx!.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+            ctx!.closePath();
+            ctx!.fill();
           },
           
           // Method to move the star
@@ -130,7 +194,7 @@ export default function Home() {
         }, 100);
       };
       
-      let mouseMoveTimeout: any;
+      let mouseMoveTimeout: ReturnType<typeof setTimeout>;
       canvas.addEventListener('mousemove', handleMouseMove);
       
       // Create a new dot
@@ -153,12 +217,12 @@ export default function Home() {
           
           // Method to draw the dot
           draw: function() {
-            ctx.fillStyle = `rgba(255, 255, 255, ${this.alpha})`;
-            ctx.shadowBlur = this.radius * 2;
-            ctx.beginPath();
-            ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
-            ctx.closePath();
-            ctx.fill();
+            ctx!.fillStyle = `rgba(255, 255, 255, ${this.alpha})`;
+            ctx!.shadowBlur = this.radius * 2;
+            ctx!.beginPath();
+            ctx!.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+            ctx!.closePath();
+            ctx!.fill();
           },
           
           // Method to move the dot
@@ -193,12 +257,12 @@ export default function Home() {
               // Line opacity based on distance
               const opacity = 0.2 * (1 - distance / 150); 
               
-              ctx.strokeStyle = `rgba(255, 255, 255, ${opacity})`;
-              ctx.lineWidth = 1;
-              ctx.beginPath();
-              ctx.moveTo(dots[i].x, dots[i].y);
-              ctx.lineTo(dots[j].x, dots[j].y);
-              ctx.stroke();
+              ctx!.strokeStyle = `rgba(255, 255, 255, ${opacity})`;
+              ctx!.lineWidth = 1;
+              ctx!.beginPath();
+              ctx!.moveTo(dots[i].x, dots[i].y);
+              ctx!.lineTo(dots[j].x, dots[j].y);
+              ctx!.stroke();
             }
           }
         }
@@ -207,7 +271,7 @@ export default function Home() {
       // Animation loop
       function animate() {
         // Clear canvas
-        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        ctx!.clearRect(0, 0, canvas!.width, canvas!.height);
         
         // Move and draw stars
         for (let i = 0; i < stars.length; i++) {
@@ -413,7 +477,11 @@ export default function Home() {
       </section>
       
       {/* About Section */}
-      <section id="about" className="min-h-screen bg-white dark:bg-gray-900 py-20">
+      <section 
+        ref={aboutSectionRef}
+        id="about" 
+        className="h-screen bg-white dark:bg-gray-900 py-20 flex items-center"
+      >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-8">About Me</h2>
           <p className="text-lg text-gray-700 dark:text-gray-300 mb-12">

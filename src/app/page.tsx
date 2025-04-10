@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 
 // Define types for our components
 interface MountainProps {
@@ -17,8 +17,16 @@ interface ParallaxProps {
   children: React.ReactNode;
 }
 
+interface StarAnimationParams {
+  maxDistFromCursor: number;
+  dotsSpeed: number;
+  backgroundSpeed: number;
+}
+
 export default function Home() {
   const parallaxRef = useRef<HTMLDivElement>(null);
+  const canvasRef = useRef<HTMLCanvasElement>(null);
+  const [isMounted, setIsMounted] = useState(false);
 
   // Handle parallax effect on scroll
   useEffect(() => {
@@ -57,10 +65,228 @@ export default function Home() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  // Star animation effect from paste-2.txt
+  useEffect(() => {
+    // Make sure we're on the client side
+    if (typeof window === 'undefined') return;
+    
+    setIsMounted(true);
+
+    // Setup canvas for star animation
+    const setupStarCanvas = () => {
+      const canvas = canvasRef.current;
+      if (!canvas) return;
+
+      const ctx = canvas.getContext('2d');
+      if (!ctx) return;
+
+      console.log("Canvas initialized");
+
+      // Set canvas size to match window
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+
+      // Animation parameters
+      const params = {
+        maxDistFromCursor: 50,
+        dotsSpeed: 0,
+        backgroundSpeed: 0
+      };
+
+      // Arrays to store stars and dots
+      const stars: any[] = [];
+      const dots: any[] = [];
+      
+      // Initialize stars
+      for (let i = 0; i < 80; i++) {
+        stars.push({
+          x: Math.floor(Math.random() * canvas.width),
+          y: Math.floor(Math.random() * canvas.height),
+          radius: Math.floor(Math.random() * 2) + 1,
+          alpha: (Math.floor(Math.random() * 10) + 1) / 10 / 2,
+          
+          // Method to draw the star
+          draw: function() {
+            ctx.fillStyle = `rgba(255, 255, 255, ${this.alpha})`;
+            ctx.shadowBlur = this.radius * 2;
+            ctx.beginPath();
+            ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+            ctx.closePath();
+            ctx.fill();
+          },
+          
+          // Method to move the star
+          move: function() {
+            this.y -= 0.15 + params.backgroundSpeed / 100;
+            if (this.y <= -10) this.y = canvas.height + 10;
+            this.draw();
+          }
+        });
+      }
+
+      // Track mouse position
+      let mouseX = 0;
+      let mouseY = 0;
+      let isMouseMoving = false;
+      
+      // Handle mouse movement
+      const handleMouseMove = (e: MouseEvent) => {
+        mouseX = e.clientX;
+        mouseY = e.clientY;
+        isMouseMoving = true;
+        
+        // Create a new dot when mouse moves
+        createDot();
+        
+        // Set timeout to track when mouse stops moving
+        clearTimeout(mouseMoveTimeout);
+        mouseMoveTimeout = setTimeout(() => {
+          isMouseMoving = false;
+        }, 100);
+      };
+      
+      let mouseMoveTimeout: any;
+      canvas.addEventListener('mousemove', handleMouseMove);
+      
+      // Create a new dot
+      function createDot() {
+        // Skip if we already have 100+ dots to avoid performance issues
+        if (dots.length > 100) return;
+        
+        // Random position variations around mouse
+        const xVariation = (Math.random() > 0.5 ? -1 : 1) * Math.floor(Math.random() * params.maxDistFromCursor);
+        const yVariation = (Math.random() > 0.5 ? -1 : 1) * Math.floor(Math.random() * params.maxDistFromCursor);
+        
+        dots.push({
+          x: mouseX + xVariation,
+          y: mouseY + yVariation,
+          radius: Math.floor(Math.random() * 5) + 1,
+          alpha: 0.5,
+          alphaReduction: 0.005,
+          speed: 0.5,
+          direction: Math.floor(Math.random() * 140) + 200,
+          
+          // Method to draw the dot
+          draw: function() {
+            ctx.fillStyle = `rgba(255, 255, 255, ${this.alpha})`;
+            ctx.shadowBlur = this.radius * 2;
+            ctx.beginPath();
+            ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+            ctx.closePath();
+            ctx.fill();
+          },
+          
+          // Method to move the dot
+          move: function() {
+            // Reduce alpha (fade out)
+            this.alpha -= this.alphaReduction;
+            
+            // Move dot based on direction
+            this.x += Math.cos(this.direction * Math.PI / 180) * (this.speed + params.dotsSpeed / 100);
+            this.y += Math.sin(this.direction * Math.PI / 180) * (this.speed + params.dotsSpeed / 100);
+            
+            // Draw the dot
+            this.draw();
+          }
+        });
+      }
+      
+      // Draw lines between dots
+      function drawConnections() {
+        if (dots.length < 2) return;
+        
+        // Connect dots that are close enough
+        for (let i = 0; i < dots.length; i++) {
+          for (let j = i + 1; j < dots.length; j++) {
+            // Calculate distance between dots
+            const dx = dots[i].x - dots[j].x;
+            const dy = dots[i].y - dots[j].y;
+            const distance = Math.sqrt(dx * dx + dy * dy);
+            
+            // Only connect dots that are within 150px of each other
+            if (distance < 150) {
+              // Line opacity based on distance
+              const opacity = 0.2 * (1 - distance / 150); 
+              
+              ctx.strokeStyle = `rgba(255, 255, 255, ${opacity})`;
+              ctx.lineWidth = 1;
+              ctx.beginPath();
+              ctx.moveTo(dots[i].x, dots[i].y);
+              ctx.lineTo(dots[j].x, dots[j].y);
+              ctx.stroke();
+            }
+          }
+        }
+      }
+      
+      // Animation loop
+      function animate() {
+        // Clear canvas
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        
+        // Move and draw stars
+        for (let i = 0; i < stars.length; i++) {
+          stars[i].move();
+        }
+        
+        // Move and draw dots, remove faded ones
+        for (let i = dots.length - 1; i >= 0; i--) {
+          if (dots[i].alpha <= 0) {
+            dots.splice(i, 1);
+          } else {
+            dots[i].move();
+          }
+        }
+        
+        // Draw connections between dots
+        drawConnections();
+        
+        // Create new dot if mouse is moving
+        if (isMouseMoving && Math.random() > 0.8) {
+          createDot();
+        }
+        
+        // Continue animation
+        requestAnimationFrame(animate);
+      }
+      
+      // Handle window resize
+      const handleResize = () => {
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+      };
+      
+      window.addEventListener('resize', handleResize);
+      
+      // Start animation
+      animate();
+      
+      // Cleanup
+      return () => {
+        window.removeEventListener('resize', handleResize);
+        canvas.removeEventListener('mousemove', handleMouseMove);
+        clearTimeout(mouseMoveTimeout);
+      };
+    };
+
+    // Only run setup once component is mounted
+    if (isMounted) {
+      const cleanup = setupStarCanvas();
+      return cleanup;
+    }
+  }, [isMounted]);
+
   return (
     <>
       {/* Parallax Landing Section */}
       <section className="relative h-screen overflow-hidden">
+        {/* Canvas for star animation (absolute positioned over everything) */}
+        <canvas 
+          ref={canvasRef}
+          className="absolute top-0 left-0 w-full h-full"
+          style={{ zIndex: 100 }}
+        />
+        
         <div ref={parallaxRef} className="absolute inset-0">
           {/* Sky Layer */}
           <div 
@@ -72,7 +298,7 @@ export default function Home() {
             }}
           />
           
-          {/* Stars Layer */}
+          {/* Stars Layer (keeping your existing stars as well) */}
           <Stars speed={0.2} zIndex={2} />
           
           {/* Moon Layer */}
@@ -229,9 +455,60 @@ function ParallaxLayer({ speed, zIndex, children }: ParallaxProps) {
   );
 }
 
-// Stars Component
+// Stars Component with Asterisk-like Burst Effect
 function Stars({ speed, zIndex }: { speed: number; zIndex: number }) {
-  const stars = Array.from({ length: 50 }).map((_, i) => {
+  // Define CSS for the star burst animation
+  const starStyles = `
+    @keyframes twinkle-simple {
+      0%, 100% { opacity: 0.3; transform: scale(0.8); }
+      50% { opacity: 0.8; transform: scale(1.2); }
+    }
+    
+    @keyframes star-burst {
+      0%, 100% { 
+        opacity: 0.3;
+        box-shadow: 0 0 0 0 white;
+      }
+      50% { 
+        opacity: 1;
+        box-shadow: 
+          0 0 2px 2px rgba(255,255,255,0.7),
+          0 0 4px 4px rgba(255,255,255,0.4),
+          0 0 8px 8px rgba(255,255,255,0.2),
+          1px 0 2px 2px rgba(255,255,255,0.5),
+          -1px 0 2px 2px rgba(255,255,255,0.5),
+          0 1px 2px 2px rgba(255,255,255,0.5),
+          0 -1px 2px 2px rgba(255,255,255,0.5),
+          1px 1px 2px 2px rgba(255,255,255,0.3),
+          -1px -1px 2px 2px rgba(255,255,255,0.3),
+          -1px 1px 2px 2px rgba(255,255,255,0.3),
+          1px -1px 2px 2px rgba(255,255,255,0.3);
+      }
+    }
+
+    @keyframes star-ray-burst {
+      0%, 15%, 85%, 100% { 
+        opacity: 0.4;
+        box-shadow: none;
+      }
+      50% { 
+        opacity: 1;
+        box-shadow: 
+          0 0 2px 0 white,
+          0 0 4px 1px rgba(255,255,255,0.6),
+          5px 0 15px 2px rgba(255,255,255,0.4),
+          -5px 0 15px 2px rgba(255,255,255,0.4),
+          0 5px 15px 2px rgba(255,255,255,0.4),
+          0 -5px 15px 2px rgba(255,255,255,0.4),
+          3px 3px 15px 2px rgba(255,255,255,0.2),
+          -3px -3px 15px 2px rgba(255,255,255,0.2),
+          -3px 3px 15px 2px rgba(255,255,255,0.2),
+          3px -3px 15px 2px rgba(255,255,255,0.2);
+      }
+    }
+  `;
+
+  const stars = Array.from({ length: 70 }).map((_, i) => {
     // Use deterministic positions for consistent appearance
     const seed = i * 8761;
     const pseudoRandom = (n: number) => ((seed * n) % 997) / 997;
@@ -239,21 +516,37 @@ function Stars({ speed, zIndex }: { speed: number; zIndex: number }) {
     const size = pseudoRandom(1) * 2 + 1;
     const top = pseudoRandom(2) * 60; // Only in top 60% of sky
     const left = pseudoRandom(3) * 100;
-    const opacity = pseudoRandom(4) * 0.7 + 0.3;
-    const delay = pseudoRandom(5) * 5;
+    const baseOpacity = pseudoRandom(4) * 0.5 + 0.3;
+    
+    // Determine which stars get the burst effect
+    // Make about 15% of stars have ray burst (the * effect)
+    // Make about 20% have regular burst
+    // The rest have simple twinkle
+    const randValue = pseudoRandom(5);
+    const animationType = randValue < 0.15 
+      ? "star-ray-burst" 
+      : (randValue < 0.35 ? "star-burst" : "twinkle-simple");
+    
+    // Make burst animations less frequent with longer delays and durations
+    const isDramaticStar = animationType !== "twinkle-simple";
+    const delay = pseudoRandom(6) * 15; // Longer delays between bursts
+    const duration = isDramaticStar 
+      ? pseudoRandom(7) * 6 + 7  // Longer duration for burst animations (7-13s)
+      : pseudoRandom(7) * 3 + 2; // Shorter for regular twinkle (2-5s)
     
     return (
       <div
         key={i}
-        className="absolute rounded-full bg-white animate-pulse"
+        className="absolute rounded-full bg-white"
         style={{
-          width: `${size}px`,
-          height: `${size}px`,
+          width: `${isDramaticStar ? size * 1.5 : size}px`,
+          height: `${isDramaticStar ? size * 1.5 : size}px`,
           top: `${top}%`,
           left: `${left}%`,
-          opacity,
+          opacity: baseOpacity,
+          animation: `${animationType} ${duration}s ease-in-out infinite`,
           animationDelay: `${delay}s`,
-          animationDuration: `${pseudoRandom(6) * 3 + 2}s`,
+          zIndex: isDramaticStar ? 1 : 0,
         }}
       />
     );
@@ -265,6 +558,7 @@ function Stars({ speed, zIndex }: { speed: number; zIndex: number }) {
       data-speed={speed}
       style={{ zIndex }}
     >
+      <style>{starStyles}</style>
       {stars}
     </div>
   );
@@ -359,6 +653,7 @@ function WaterWaves() {
                 C840,40 960,4 1080,12 
                 C1200,4 1320,40 1440,12
               `}
+
               stroke="#4E7DB7"
               strokeWidth="2"
               strokeOpacity="0.3"

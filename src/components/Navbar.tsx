@@ -73,12 +73,12 @@ export default function Navbar() {
         <div className="flex justify-between h-16 items-center">
           {/* Logo/Brand */}
           <div className="flex-shrink-0">
-          <Link 
-            href="/" 
-            className={`text-xl font-bold transition-all duration-300 ${
-              isAtTop 
+          <Link
+            href="/"
+            className={`text-xl font-bold px-3 py-2 rounded-md transition-all duration-300 ${
+              isAtTop
                 ? 'text-white hover:scale-110 drop-shadow-[0_1px_2px_rgba(0,0,0,0.8)] hover:text-transparent hover:bg-clip-text hover:bg-gradient-to-b from-white to-[#83AEE2]'
-                : 'text-gray-900 dark:text-white hover:scale-110 hover:text-transparent hover:bg-clip-text hover:bg-gradient-to-b from-white to-[#83AEE2]'
+                : 'text-gray-900 dark:text-white hover:scale-110 hover:text-transparent hover:bg-clip-text hover:bg-gradient-to-b from-white to-[#83AEE2] dark:hover:bg-gradient-to-b dark:hover:from-[#B2D0F0] dark:hover:to-[#4372A5]'
             }`}
           >
             Julian

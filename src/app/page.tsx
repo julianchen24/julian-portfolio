@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useEffect, useRef, useState } from "react";
+import ProfileCard from "@/components/ProfileCard";
 
 // Define types for our components
 interface MountainProps {
@@ -23,6 +24,7 @@ export default function Home() {
   const aboutSectionRef = useRef<HTMLElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
   const heroSectionRef = useRef<HTMLElement>(null);
+  const profileCardRef = useRef<HTMLElement>(null);
   const [isMounted, setIsMounted] = useState(false);
   
   // Typing animation states
@@ -519,20 +521,28 @@ export default function Home() {
         </div>
       </section>
       
+      {/* Profile Card Section */}
+      <section 
+        ref={profileCardRef}
+        className="min-h-screen bg-white dark:bg-gray-900 py-20 flex items-center justify-center snap-start snap-always"
+        style={{ scrollSnapAlign: 'start' }}
+      >
+        <ProfileCard />
+      </section>
+      
       {/* About Section */}
       <section 
         ref={aboutSectionRef}
         id="about" 
-        className="h-screen bg-white dark:bg-gray-900 py-20 flex items-center snap-start snap-always"
+        className="min-h-screen bg-white dark:bg-gray-900 py-20 flex items-center snap-start snap-always"
         style={{ scrollSnapAlign: 'start' }}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-8">About Me</h2>
           <p className="text-lg text-gray-700 dark:text-gray-300 mb-12">
-            Hi! I'm Julian, a Computer Engineering student at the University of Waterloo passionate about using technology to geuinely help others 
-            and solve real-world problems. I'm especially interested in full-stack development, machine learning, and cloud computing.
-            I'm originally from Vancouver, BC, but I'll be studying in Waterloo, ON for the next few years.
-            Beyond my tech interests, I love trying new foods, skiing, basketball, running, skating, photography, and chasing sunsets.
+            Welcome to my portfolio! I am a passionate developer with expertise in web development and design.
+            This is a placeholder for your about section. You can add more details about yourself, your skills,
+            and your experience here.
           </p>
         </div>
       </section>

@@ -6,10 +6,23 @@ import Link from 'next/link';
 
 export default function ProfileCard() {
   return (
-    <div className="max-w-4xl mx-auto px-4 py-8 bg-white dark:bg-gray-800 rounded-xl shadow-lg">
-      <div className="flex flex-col md:flex-row items-center gap-8">
-        {/* Profile Section */}
-        <div className="flex flex-col items-center md:items-start">
+    <div className="max-w-4xl mx-auto px-10 py-10 bg-white dark:bg-gray-800 rounded-xl shadow-lg">
+      {/* 👇 Make the flex container wrap BOTH image and text */}
+      <div className="flex flex-col md:flex-row items-center md:items-start gap-8">
+        
+        {/* Left: Profile Image */}
+        <div className="flex-shrink-0">
+          <Image
+            src="/images/PortfolioJulian.jpg"
+            alt="Julian on a dock"
+            width={300}
+            height={300}
+            className="rounded-xl object-cover shadow-md"
+          />
+        </div>
+
+        {/* Right: Profile Info + Tech Stack */}
+        <div className="flex-1 flex flex-col items-center md:items-start">
           <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-2">
             Julian Chen
           </h2>
@@ -39,56 +52,22 @@ export default function ProfileCard() {
               LinkedIn
             </a>!
           </p>
-        </div>
-        
-        {/* Technologies Grid */}
-        <div className="grid grid-cols-2 gap-4 mt-4 md:mt-0">
-          <div className="flex flex-col items-center">
-            <div className="relative w-16 h-16 mb-2">
-              <Image 
-                src="/images/nextjs-logo.png" 
-                alt="Next.js" 
-                fill
-                className="object-contain"
-              />
-            </div>
-            <span className="text-sm text-gray-600 dark:text-gray-400">Next.js</span>
-          </div>
-          
-          <div className="flex flex-col items-center">
-            <div className="relative w-16 h-16 mb-2">
-              <Image 
-                src="/images/tailwind-logo.png" 
-                alt="Tailwind CSS" 
-                fill
-                className="object-contain"
-              />
-            </div>
-            <span className="text-sm text-gray-600 dark:text-gray-400">Tailwind CSS</span>
-          </div>
-          
-          <div className="flex flex-col items-center">
-            <div className="relative w-16 h-16 mb-2">
-              <Image 
-                src="/images/typescript-logo.png" 
-                alt="TypeScript" 
-                fill
-                className="object-contain"
-              />
-            </div>
-            <span className="text-sm text-gray-600 dark:text-gray-400">TypeScript</span>
-          </div>
-          
-          <div className="flex flex-col items-center">
-            <div className="relative w-16 h-16 mb-2">
-              <Image 
-                src="/images/waterloo-logo.png" 
-                alt="University of Waterloo" 
-                fill
-                className="object-contain"
-              />
-            </div>
-            <span className="text-sm text-gray-600 dark:text-gray-400">UWaterloo</span>
+
+          {/* Technologies Grid */}
+          <div className="grid grid-cols-2 gap-4">
+            {[
+              { src: "/images/nextjs-logo.png", alt: "Next.js", label: "Next.js" },
+              { src: "/images/tailwind-logo.png", alt: "Tailwind CSS", label: "Tailwind CSS" },
+              { src: "/images/typescript-logo.png", alt: "TypeScript", label: "TypeScript" },
+              { src: "/images/waterloo-logo.png", alt: "UWaterloo", label: "UWaterloo" },
+            ].map(({ src, alt, label }) => (
+              <div key={alt} className="flex flex-col items-center">
+                <div className="relative w-16 h-16 mb-2">
+                  <Image src={src} alt={alt} fill className="object-contain" />
+                </div>
+                <span className="text-sm text-gray-600 dark:text-gray-400">{label}</span>
+              </div>
+            ))}
           </div>
         </div>
       </div>

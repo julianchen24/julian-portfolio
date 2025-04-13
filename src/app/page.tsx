@@ -49,7 +49,7 @@ export default function Home() {
     
     const tick = () => {
       // Current text state based on if we're deleting or typing
-      let updatedText = isDeleting 
+      const updatedText = isDeleting 
         ? fullText.substring(0, text.length - 1) 
         : fullText.substring(0, text.length + 1);
       
@@ -359,13 +359,12 @@ export default function Home() {
   return (
     <div 
       ref={containerRef} 
-      className="h-screen overflow-y-auto snap-y snap-mandatory"
-      style={{ scrollSnapType: 'y mandatory' }}
+      className="h-auto overflow-y-auto snap-y snap-mandatory"
     >
       {/* Parallax Landing Section */}
       <section 
         ref={heroSectionRef}
-        className="relative h-screen overflow-hidden snap-start snap-always"
+        className="relative h-screen overflow-hidden snap-start"
         style={{ scrollSnapAlign: 'start' }}
       >
         {/* Canvas for star animation */}
@@ -524,32 +523,31 @@ export default function Home() {
       {/* Profile Card Section */}
       <section 
         ref={profileCardRef}
-        className="min-h-screen bg-white dark:bg-gray-900 py-20 flex items-center justify-center snap-start snap-always"
-        style={{ scrollSnapAlign: 'start' }}
+        className="min-h-screen bg-white dark:bg-gray-900 py-20 flex items-center justify-center snap-start"
       >
         <ProfileCard />
       </section>
-      
       {/* About Section */}
-      <section 
-        ref={aboutSectionRef}
-        id="about" 
-        className="min-h-screen bg-white dark:bg-gray-900 py-20 flex items-center snap-start snap-always"
-        style={{ scrollSnapAlign: 'start' }}
-      >
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-8">About Me</h2>
-          <p className="text-lg text-gray-700 dark:text-gray-300 mb-12">
-            Welcome to my portfolio! I am a passionate developer with expertise in web development and design.
-            This is a placeholder for your about section. You can add more details about yourself, your skills,
-            and your experience here.
-          </p>
-        </div>
-      </section>
+      <div className="snap-none"> {/* Wrap in div to break out of snap behavior */}
+        <section
+          ref={aboutSectionRef}
+          id="about"
+          className="min-h-screen bg-white dark:bg-gray-900 py-20 flex items-center"
+        >
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-8">About Me</h2>
+            <p className="text-lg text-gray-700 dark:text-gray-300 mb-12">
+            Hi! I'm Julian, a Computer Engineering student at the University of Waterloo passionate about using technology to geuinely help others 
+            and solve real-world problems. I'm especially interested in full-stack development, machine learning, and cloud computing.
+            I'm originally from Vancouver, BC, but I'll be studying in Waterloo, ON for the next few years.
+            Beyond my tech interests, I love trying new foods, skiing, basketball, running, skating, photography, and chasing sunsets.
+            </p>
+          </div>
+        </section>
+      </div>
     </div>
   );
 }
-
 // ParallaxLayer Component
 function ParallaxLayer({ speed, zIndex, children }: ParallaxProps) {
   return (

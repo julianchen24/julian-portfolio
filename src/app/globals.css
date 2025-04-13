@@ -13,6 +13,7 @@ html {
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
   scroll-behavior: smooth;
+  height: 100%;
 }
 
 .dark {
@@ -27,20 +28,29 @@ body {
   overflow-x: hidden;
 }
 
-/* Scroll Snap Styles */
-.snap-y {
+/* Selective snap scrolling styles */
+.snap-container {
   scroll-snap-type: y mandatory;
   overflow-y: auto;
-  height: 100vh;
+  height: auto;
+  min-height: 100vh;
   scroll-behavior: smooth;
 }
 
 .snap-start {
   scroll-snap-align: start;
-  scroll-snap-stop: always;
 }
 
-/* Ensure smooth transitions */
-.snap-container {
-  scroll-behavior: smooth;
+/* Hero section styling */
+section.hero {
+  height: 100vh;
+  min-height: 100vh;
+  max-height: 100vh;
+}
+
+/* Content sections styling */
+section.content {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
 }

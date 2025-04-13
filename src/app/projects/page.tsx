@@ -7,7 +7,7 @@ import ProjectCard from '@/components/ProjectCard';
 // Project data array
 const projects = [
   {
-    imageUrl: "https://via.placeholder.com/400x300",
+    imageUrl: "/images/projects/CodeSagePhoto.png",
     title: "CodeSage (Coming Soon)",
     description: "A personal portfolio website built with Next.js and Tailwind CSS.",
     technologies: ["Next.js", "React", "Tailwind CSS"],
@@ -15,7 +15,7 @@ const projects = [
     demoUrl: "https://your-live-demo-url.com"
   },
   {
-    imageUrl: "https://via.placeholder.com/400x300",
+    imageUrl: "/images/projects/TermiumPlusAPI.png",
     title: "Termium Plus API",
     description: "A task management application with drag-and-drop functionality and team collaboration.",
     technologies: ["Vue.js", "Firebase", "Tailwind CSS"],
@@ -39,7 +39,7 @@ const projects = [
     demoUrl: "https://your-ecommerce-demo.com"
   },
   {
-    imageUrl: "https://via.placeholder.com/400x300",
+    imageUrl: "/images/projects/LinkComPhoto.jpg",
     title: "LinkCom",
     description: "A task management application with drag-and-drop functionality and team collaboration.",
     technologies: ["Vue.js", "Firebase", "Tailwind CSS"],
@@ -47,7 +47,7 @@ const projects = [
     demoUrl: "https://your-task-app-demo.com"
   },
   {
-    imageUrl: "https://via.placeholder.com/400x300",
+    imageUrl: "/images/projects/CroakQuestPhoto.png",
     title: "Croak Quest",
     description: "A task management application with drag-and-drop functionality and team collaboration.",
     technologies: ["Vue.js", "Firebase", "Tailwind CSS"],
@@ -55,7 +55,7 @@ const projects = [
     demoUrl: "https://your-task-app-demo.com"
   },
   {
-    imageUrl: "https://via.placeholder.com/400x300",
+    imageUrl: "/images/projects/ESGClassification.png",
     title: "ESG Classification",
     description: "A task management application with drag-and-drop functionality and team collaboration.",
     technologies: ["Vue.js", "Firebase", "Tailwind CSS"],
@@ -63,7 +63,7 @@ const projects = [
     demoUrl: "https://your-task-app-demo.com"
   },
   {
-    imageUrl: "https://via.placeholder.com/400x300",
+    imageUrl: "/images/projects/WaapPhoto.png",
     title: "Workforce Adjustment Alternation Portal",
     description: "A task management application with drag-and-drop functionality and team collaboration.",
     technologies: ["Vue.js", "Firebase", "Tailwind CSS"],
@@ -71,7 +71,7 @@ const projects = [
     demoUrl: "https://your-task-app-demo.com"
   },
   {
-    imageUrl: "https://via.placeholder.com/400x300",
+    imageUrl: "/images/projects/PowerPrompt.png",
     title: "PowerPrompt",
     description: "A task management application with drag-and-drop functionality and team collaboration.",
     technologies: ["Vue.js", "Firebase", "Tailwind CSS"],
@@ -87,7 +87,7 @@ const projects = [
     demoUrl: "https://your-task-app-demo.com"
   },
   {
-    imageUrl: "https://via.placeholder.com/400x300",
+    imageUrl: "/images/projects/FlashCards.png",
     title: "FlashCards",
     description: "A task management application with drag-and-drop functionality and team collaboration.",
     technologies: ["Vue.js", "Firebase", "Tailwind CSS"],
@@ -95,7 +95,7 @@ const projects = [
     demoUrl: "https://your-task-app-demo.com"
   },
   {
-    imageUrl: "https://via.placeholder.com/400x300",
+    imageUrl: "/images/projects/CalendarPhoto.png",
     title: "MyCalendar",
     description: "A task management application with drag-and-drop functionality and team collaboration.",
     technologies: ["Vue.js", "Firebase", "Tailwind CSS"],
@@ -103,7 +103,7 @@ const projects = [
     demoUrl: "https://your-task-app-demo.com"
   },
   {
-    imageUrl: "https://via.placeholder.com/400x300",
+    imageUrl: "/images/projects/PortfolioLandingPagePhoto.png",
     title: "This Website!",
     description: "A task management application with drag-and-drop functionality and team collaboration.",
     technologies: ["Vue.js", "Firebase", "Tailwind CSS"],

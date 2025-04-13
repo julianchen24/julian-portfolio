@@ -8,7 +8,7 @@ import ProjectCard from '@/components/ProjectCard';
 const projects = [
   {
     imageUrl: "https://via.placeholder.com/400x300",
-    title: "Portfolio Website",
+    title: "CodeSage (Coming Soon)",
     description: "A personal portfolio website built with Next.js and Tailwind CSS.",
     technologies: ["Next.js", "React", "Tailwind CSS"],
     githubUrl: "https://github.com/yourusername/portfolio-website",
@@ -16,7 +16,23 @@ const projects = [
   },
   {
     imageUrl: "https://via.placeholder.com/400x300",
-    title: "E-commerce Platform",
+    title: "Termium Plus API",
+    description: "A task management application with drag-and-drop functionality and team collaboration.",
+    technologies: ["Vue.js", "Firebase", "Tailwind CSS"],
+    githubUrl: "https://github.com/yourusername/task-management-app",
+    demoUrl: "https://your-task-app-demo.com"
+  },
+  {
+    imageUrl: "https://via.placeholder.com/400x300",
+    title: "FluentAI",
+    description: "A task management application with drag-and-drop functionality and team collaboration.",
+    technologies: ["Vue.js", "Firebase", "Tailwind CSS"],
+    githubUrl: "https://github.com/yourusername/task-management-app",
+    demoUrl: "https://your-task-app-demo.com"
+  },
+  {
+    imageUrl: "https://via.placeholder.com/400x300",
+    title: "AI Vectorizer",
     description: "A full-stack e-commerce platform with product management and payment processing.",
     technologies: ["React", "Node.js", "MongoDB"],
     githubUrl: "https://github.com/yourusername/ecommerce-platform",
@@ -24,7 +40,71 @@ const projects = [
   },
   {
     imageUrl: "https://via.placeholder.com/400x300",
-    title: "Task Management App",
+    title: "LinkCom",
+    description: "A task management application with drag-and-drop functionality and team collaboration.",
+    technologies: ["Vue.js", "Firebase", "Tailwind CSS"],
+    githubUrl: "https://github.com/yourusername/task-management-app",
+    demoUrl: "https://your-task-app-demo.com"
+  },
+  {
+    imageUrl: "https://via.placeholder.com/400x300",
+    title: "Croak Quest",
+    description: "A task management application with drag-and-drop functionality and team collaboration.",
+    technologies: ["Vue.js", "Firebase", "Tailwind CSS"],
+    githubUrl: "https://github.com/yourusername/task-management-app",
+    demoUrl: "https://your-task-app-demo.com"
+  },
+  {
+    imageUrl: "https://via.placeholder.com/400x300",
+    title: "ESG Classification",
+    description: "A task management application with drag-and-drop functionality and team collaboration.",
+    technologies: ["Vue.js", "Firebase", "Tailwind CSS"],
+    githubUrl: "https://github.com/yourusername/task-management-app",
+    demoUrl: "https://your-task-app-demo.com"
+  },
+  {
+    imageUrl: "https://via.placeholder.com/400x300",
+    title: "Workforce Adjustment Alternation Portal",
+    description: "A task management application with drag-and-drop functionality and team collaboration.",
+    technologies: ["Vue.js", "Firebase", "Tailwind CSS"],
+    githubUrl: "https://github.com/yourusername/task-management-app",
+    demoUrl: "https://your-task-app-demo.com"
+  },
+  {
+    imageUrl: "https://via.placeholder.com/400x300",
+    title: "PowerPrompt",
+    description: "A task management application with drag-and-drop functionality and team collaboration.",
+    technologies: ["Vue.js", "Firebase", "Tailwind CSS"],
+    githubUrl: "https://github.com/yourusername/task-management-app",
+    demoUrl: "https://your-task-app-demo.com"
+  },
+  {
+    imageUrl: "https://via.placeholder.com/400x300",
+    title: "WhisperAI",
+    description: "A task management application with drag-and-drop functionality and team collaboration.",
+    technologies: ["Vue.js", "Firebase", "Tailwind CSS"],
+    githubUrl: "https://github.com/yourusername/task-management-app",
+    demoUrl: "https://your-task-app-demo.com"
+  },
+  {
+    imageUrl: "https://via.placeholder.com/400x300",
+    title: "FlashCards",
+    description: "A task management application with drag-and-drop functionality and team collaboration.",
+    technologies: ["Vue.js", "Firebase", "Tailwind CSS"],
+    githubUrl: "https://github.com/yourusername/task-management-app",
+    demoUrl: "https://your-task-app-demo.com"
+  },
+  {
+    imageUrl: "https://via.placeholder.com/400x300",
+    title: "MyCalendar",
+    description: "A task management application with drag-and-drop functionality and team collaboration.",
+    technologies: ["Vue.js", "Firebase", "Tailwind CSS"],
+    githubUrl: "https://github.com/yourusername/task-management-app",
+    demoUrl: "https://your-task-app-demo.com"
+  },
+  {
+    imageUrl: "https://via.placeholder.com/400x300",
+    title: "This Website!",
     description: "A task management application with drag-and-drop functionality and team collaboration.",
     technologies: ["Vue.js", "Firebase", "Tailwind CSS"],
     githubUrl: "https://github.com/yourusername/task-management-app",

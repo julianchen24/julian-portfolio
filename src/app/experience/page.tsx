@@ -7,21 +7,28 @@ import ExperienceCard from '@/components/ExperienceCard';
 // Experience data array
 const experiences = [
   {
-    title: "Senior Developer",
+    title: "Database Analyst",
     company: "Tech Innovations Inc.",
     location: "Vancouver, BC",
     duration: "2022 - Present",
     description: "Led development of multiple web applications using React, Next.js, and TypeScript. Implemented CI/CD pipelines and mentored junior developers."
   },
   {
-    title: "Web Developer",
+    title: "Microsoft Azure AI Developer",
     company: "Digital Solutions Ltd.",
     location: "Toronto, ON",
     duration: "2019 - 2022",
     description: "Developed responsive web applications and implemented modern UI/UX designs. Worked with React, Vue.js, and various backend technologies."
   },
   {
-    title: "Junior Developer",
+    title: "Firmware Developer",
+    company: "Digital Solutions Ltd.",
+    location: "Toronto, ON",
+    duration: "2019 - 2022",
+    description: "Developed responsive web applications and implemented modern UI/UX designs. Worked with React, Vue.js, and various backend technologies."
+  },
+  {
+    title: "Teaching Assistant",
     company: "WebCraft Studios",
     location: "Montreal, QC",
     duration: "2017 - 2019",

@@ -20,7 +20,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
   demoUrl
 }) => {
   return (
-    <div className="bg-white dark:bg-gray-800 rounded-lg shadow-md overflow-hidden transition-all duration-300 hover:shadow-xl hover:scale-[1.02]">
+    <div className="bg-#83AEE2] dark:bg-gray-800 rounded-lg shadow-md overflow-hidden transition-all duration-300 hover:shadow-xl hover:scale-[1.02]">
       {/* More balanced image container with aspect ratio */}
       <div className="relative h-90 bg-gray-300 dark:bg-gray-700 overflow-hidden">
         <img

@@ -3,6 +3,7 @@
 import React from 'react';
 import Link from 'next/link';
 import ProjectCard from '@/components/ProjectCard';
+import TitleCard from '@/components/TitleCard';
 
 // Project data array
 const projects = [
@@ -115,8 +116,17 @@ const projects = [
 
 export default function ProjectsPage() {
   return (
-    <main className="min-h-screen bg-white dark:bg-gray-900 py-20">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <main className="min-h-screen bg-white dark:bg-gray-900">
+      {/* Gradient background container for TitleCard */}
+      <div className="w-full bg-gradient-to-b from-[#83AEE2] to-[#B2D0F0] py-16">
+        <TitleCard 
+          title="PROJECTS"
+          subtitle="A Collection of My Work"
+          description="Explore a curated selection of my most recent projects."
+        />
+      </div>
+      
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
         <div className="mb-8 flex items-center">
           <Link 
             href="/" 
@@ -136,8 +146,6 @@ export default function ProjectsPage() {
             Back to Home
           </Link>
         </div>
-        
-        <h1 className="text-4xl font-bold text-gray-900 dark:text-white mb-8">Projects</h1>
         
         {/* Modified grid: reduced to 2 columns on large screens */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-10">

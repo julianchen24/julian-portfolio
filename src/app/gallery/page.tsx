@@ -30,7 +30,7 @@ export default function GalleryPage() {
   return (
     <main className="min-h-screen bg-white dark:bg-gray-900" id="gallery">
       {/* Gradient background container for TitleCard */}
-      <div className="w-full bg-gradient-to-b from-[#83AEE2] to-[#B2D0F0] py-16">
+      <div className="w-full bg-gradient-to-b from-[#83AEE2] to-white py-16 h-80">
         <TitleCard 
           title="GALLERY"
           subtitle="Visual Memories"

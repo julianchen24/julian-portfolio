@@ -2,6 +2,7 @@
 
 import React, { useState } from 'react';
 import Link from 'next/link';
+import TitleCard from '@/components/TitleCard';
 
 // Define the photo data
 const photos = [
@@ -27,8 +28,17 @@ export default function GalleryPage() {
   };
 
   return (
-    <main className="min-h-screen bg-white dark:bg-gray-900 py-20" id="gallery">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <main className="min-h-screen bg-white dark:bg-gray-900" id="gallery">
+      {/* Gradient background container for TitleCard */}
+      <div className="w-full bg-gradient-to-b from-[#83AEE2] to-[#B2D0F0] py-16">
+        <TitleCard 
+          title="GALLERY"
+          subtitle="Visual Memories"
+          description="A collection of photos I've taken over the years."
+        />
+      </div>
+      
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
         <div className="mb-8 flex items-center">
           <Link 
             href="/" 
@@ -47,12 +57,6 @@ export default function GalleryPage() {
             </svg>
             Back to Home
           </Link>
-        </div>
-        
-        {/* Title Card */}
-        <div className="mb-10 bg-white dark:bg-gray-800 rounded-lg shadow-md p-6 text-center">
-          <h1 className="text-4xl font-bold text-gray-900 dark:text-white mb-2">Gallery</h1>
-          <p className="text-gray-600 dark:text-gray-400">A collection of photos I&apos;ve taken over the years</p>
         </div>
         
         {/* Photo Grid */}

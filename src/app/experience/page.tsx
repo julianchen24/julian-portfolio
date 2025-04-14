@@ -3,6 +3,7 @@
 import React from 'react';
 import Link from 'next/link';
 import ExperienceCard from '@/components/ExperienceCard';
+import TitleCard from '@/components/TitleCard';
 
 // Experience data array
 const experiences = [
@@ -38,8 +39,17 @@ const experiences = [
 
 export default function ExperiencePage() {
   return (
-    <main className="min-h-screen bg-gray-100 dark:bg-gray-800 py-20">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <main className="min-h-screen bg-gray-100 dark:bg-gray-800">
+      {/* Gradient background container for TitleCard */}
+      <div className="w-full bg-gradient-to-b from-[#83AEE2] to-[#B2D0F0] py-16">
+        <TitleCard 
+          title="EXPERIENCE"
+          subtitle="My Professional Journey"
+          description="A timeline of my career path and professional achievements."
+        />
+      </div>
+      
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
         <div className="mb-8 flex items-center">
           <Link 
             href="/" 
@@ -59,8 +69,6 @@ export default function ExperiencePage() {
             Back to Home
           </Link>
         </div>
-        
-        <h1 className="text-4xl font-bold text-gray-900 dark:text-white mb-8">Experience</h1>
         
         <div className="space-y-12">
           {/* Map over experiences array to render ExperienceCard components */}

@@ -139,7 +139,8 @@ export default function ProjectsPage() {
         
         <h1 className="text-4xl font-bold text-gray-900 dark:text-white mb-8">Projects</h1>
         
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {/* Modified grid: reduced to 2 columns on large screens */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
           {/* Map over projects array to render ProjectCard components */}
           {projects.map((project, index) => (
             <ProjectCard

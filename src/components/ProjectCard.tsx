@@ -21,11 +21,12 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
 }) => {
   return (
     <div className="bg-white dark:bg-gray-800 rounded-lg shadow-md overflow-hidden transition-all duration-300 hover:shadow-xl hover:scale-[1.02]">
-      <div className="h-48 bg-gray-300 dark:bg-gray-700 flex items-center justify-center">
-        <img 
-          src={imageUrl} 
-          alt={title} 
-          className="w-full h-full object-cover"
+      {/* More balanced image container with aspect ratio */}
+      <div className="relative h-90 bg-gray-300 dark:bg-gray-700 overflow-hidden">
+        <img
+          src={imageUrl}
+          alt={title}
+          className="w-full h-full object-cover object-center"
         />
       </div>
       <div className="p-6">
@@ -35,8 +36,8 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
         </p>
         <div className="flex flex-wrap gap-2 mb-4">
           {technologies.map((tech, index) => (
-            <span 
-              key={index} 
+            <span
+              key={index}
               className="px-2 py-1 bg-blue-100 text-blue-800 text-xs rounded-md"
             >
               {tech}
@@ -44,9 +45,9 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
           ))}
         </div>
         <div className="flex space-x-4">
-          <a 
-            href={githubUrl} 
-            target="_blank" 
+          <a
+            href={githubUrl}
+            target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center text-gray-700 hover:text-gray-900 dark:text-gray-300 dark:hover:text-white transition-colors"
           >
@@ -55,9 +56,9 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
             </svg>
             GitHub
           </a>
-          <a 
-            href={demoUrl} 
-            target="_blank" 
+          <a
+            href={demoUrl}
+            target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center text-blue-600 hover:text-blue-800 transition-colors"
           >

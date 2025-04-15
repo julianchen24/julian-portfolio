@@ -6,13 +6,14 @@ import ProjectCard from '@/components/ProjectCard';
 import TitleCard from '@/components/TitleCard';
 
 // Project data array
+// Project data array
 const projects = [
   {
     imageUrl: "/images/projects/CodeSagePhoto.png",
     title: "CodeSage (Coming Soon)",
     description: "A personal portfolio website built with Next.js and Tailwind CSS.",
-    technologies: ["Next.js", "React", "Tailwind CSS"],
-    githubUrl: "https://github.com/yourusername/portfolio-website",
+    technologies: ["TypeScript", "Express", "React", "PostgreSQL"],
+    githubUrl: "https://github.com/orgs/codeVisualizer2/repositories",
     demoUrl: "https://your-live-demo-url.com"
   },
   {
@@ -20,7 +21,7 @@ const projects = [
     title: "Termium Plus API",
     description: "A task management application with drag-and-drop functionality and team collaboration.",
     technologies: ["Vue.js", "Firebase", "Tailwind CSS"],
-    githubUrl: "https://github.com/yourusername/task-management-app",
+    githubUrl: "https://github.com/julianchen24/Termium-Plus-API",
     demoUrl: "https://your-task-app-demo.com"
   },
   {
@@ -28,7 +29,7 @@ const projects = [
     title: "FluentAI",
     description: "A task management application with drag-and-drop functionality and team collaboration.",
     technologies: ["Vue.js", "Firebase", "Tailwind CSS"],
-    githubUrl: "https://github.com/yourusername/task-management-app",
+    githubUrl: "https://github.com/julianchen24/FluentAI",
     demoUrl: "https://your-task-app-demo.com"
   },
   {
@@ -36,7 +37,7 @@ const projects = [
     title: "AI Vectorizer",
     description: "A full-stack e-commerce platform with product management and payment processing.",
     technologies: ["React", "Node.js", "MongoDB"],
-    githubUrl: "https://github.com/yourusername/ecommerce-platform",
+    githubUrl: "https://github.com/julianchen24/AI-Vectorizer",
     demoUrl: "https://your-ecommerce-demo.com"
   },
   {
@@ -44,7 +45,7 @@ const projects = [
     title: "LinkCom",
     description: "A task management application with drag-and-drop functionality and team collaboration.",
     technologies: ["Vue.js", "Firebase", "Tailwind CSS"],
-    githubUrl: "https://github.com/yourusername/task-management-app",
+    githubUrl: "https://github.com/julianchen24/LinkCom",
     demoUrl: "https://your-task-app-demo.com"
   },
   {
@@ -52,7 +53,7 @@ const projects = [
     title: "Croak Quest",
     description: "A task management application with drag-and-drop functionality and team collaboration.",
     technologies: ["Vue.js", "Firebase", "Tailwind CSS"],
-    githubUrl: "https://github.com/yourusername/task-management-app",
+    githubUrl: "https://github.com/julianchen24/Croak-Quest",
     demoUrl: "https://your-task-app-demo.com"
   },
   {
@@ -60,7 +61,7 @@ const projects = [
     title: "ESG Classification",
     description: "A task management application with drag-and-drop functionality and team collaboration.",
     technologies: ["Vue.js", "Firebase", "Tailwind CSS"],
-    githubUrl: "https://github.com/yourusername/task-management-app",
+    githubUrl: "https://github.com/julianchen24/ESG-Classification-Heatmap",
     demoUrl: "https://your-task-app-demo.com"
   },
   {
@@ -68,7 +69,7 @@ const projects = [
     title: "Workforce Adjustment Alternation Portal",
     description: "A task management application with drag-and-drop functionality and team collaboration.",
     technologies: ["Vue.js", "Firebase", "Tailwind CSS"],
-    githubUrl: "https://github.com/yourusername/task-management-app",
+    githubUrl: "https://github.com/julianchen24/Workforce-Adjustment-Alternation-Portal",
     demoUrl: "https://your-task-app-demo.com"
   },
   {
@@ -76,7 +77,7 @@ const projects = [
     title: "PowerPrompt",
     description: "A task management application with drag-and-drop functionality and team collaboration.",
     technologies: ["Vue.js", "Firebase", "Tailwind CSS"],
-    githubUrl: "https://github.com/yourusername/task-management-app",
+    githubUrl: "https://github.com/julianchen24/PowerPrompt",
     demoUrl: "https://your-task-app-demo.com"
   },
   {
@@ -84,7 +85,7 @@ const projects = [
     title: "WhisperAI",
     description: "A task management application with drag-and-drop functionality and team collaboration.",
     technologies: ["Vue.js", "Firebase", "Tailwind CSS"],
-    githubUrl: "https://github.com/yourusername/task-management-app",
+    githubUrl: "https://github.com/julianchen24/Whisper-AI-Service",
     demoUrl: "https://your-task-app-demo.com"
   },
   {
@@ -92,7 +93,7 @@ const projects = [
     title: "FlashCards",
     description: "A task management application with drag-and-drop functionality and team collaboration.",
     technologies: ["Vue.js", "Firebase", "Tailwind CSS"],
-    githubUrl: "https://github.com/yourusername/task-management-app",
+    githubUrl: "https://github.com/julianchen24/FlashCards",
     demoUrl: "https://your-task-app-demo.com"
   },
   {
@@ -100,7 +101,7 @@ const projects = [
     title: "MyCalendar",
     description: "A task management application with drag-and-drop functionality and team collaboration.",
     technologies: ["Vue.js", "Firebase", "Tailwind CSS"],
-    githubUrl: "https://github.com/yourusername/task-management-app",
+    githubUrl: "https://github.com/julianchen24/CalendarTool",
     demoUrl: "https://your-task-app-demo.com"
   },
   {
@@ -108,10 +109,9 @@ const projects = [
     title: "This Website!",
     description: "A task management application with drag-and-drop functionality and team collaboration.",
     technologies: ["Vue.js", "Firebase", "Tailwind CSS"],
-    githubUrl: "https://github.com/yourusername/task-management-app",
+    githubUrl: "https://github.com/julianchen24/julian-portfolio",
     demoUrl: "https://your-task-app-demo.com"
   }
-  
 ];
 
 export default function ProjectsPage() {

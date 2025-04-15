@@ -6,7 +6,6 @@ import ProjectCard from '@/components/ProjectCard';
 import TitleCard from '@/components/TitleCard';
 
 // Project data array
-// Project data array
 const projects = [
   {
     imageUrl: "/images/projects/CodeSagePhoto.png",
@@ -20,7 +19,7 @@ const projects = [
     imageUrl: "/images/projects/TermiumPlusAPI.png",
     title: "Termium Plus API",
     description: "A task management application with drag-and-drop functionality and team collaboration.",
-    technologies: ["Vue.js", "Firebase", "Tailwind CSS"],
+    technologies: ["Docker", "Python", "FastAPI", "JavaScript"],
     githubUrl: "https://github.com/julianchen24/Termium-Plus-API",
     demoUrl: "https://your-task-app-demo.com"
   },
@@ -28,7 +27,7 @@ const projects = [
     imageUrl: "https://via.placeholder.com/400x300",
     title: "FluentAI",
     description: "A task management application with drag-and-drop functionality and team collaboration.",
-    technologies: ["Vue.js", "Firebase", "Tailwind CSS"],
+    technologies: ["Docker", "Python", "FastAPI"],
     githubUrl: "https://github.com/julianchen24/FluentAI",
     demoUrl: "https://your-task-app-demo.com"
   },
@@ -36,7 +35,7 @@ const projects = [
     imageUrl: "https://via.placeholder.com/400x300",
     title: "AI Vectorizer",
     description: "A full-stack e-commerce platform with product management and payment processing.",
-    technologies: ["React", "Node.js", "MongoDB"],
+    technologies: ["Tailwind CSS", "React", "FastAPI", "D3.js", "NumPy"],
     githubUrl: "https://github.com/julianchen24/AI-Vectorizer",
     demoUrl: "https://your-ecommerce-demo.com"
   },
@@ -44,7 +43,7 @@ const projects = [
     imageUrl: "/images/projects/LinkComPhoto.jpg",
     title: "LinkCom",
     description: "A task management application with drag-and-drop functionality and team collaboration.",
-    technologies: ["Vue.js", "Firebase", "Tailwind CSS"],
+    technologies: ["STM32", "C", "Altium", "Fusion360"],
     githubUrl: "https://github.com/julianchen24/LinkCom",
     demoUrl: "https://your-task-app-demo.com"
   },
@@ -52,7 +51,7 @@ const projects = [
     imageUrl: "/images/projects/CroakQuestPhoto.png",
     title: "Croak Quest",
     description: "A task management application with drag-and-drop functionality and team collaboration.",
-    technologies: ["Vue.js", "Firebase", "Tailwind CSS"],
+    technologies: ["C#", "Unity", "Leap Motion"],
     githubUrl: "https://github.com/julianchen24/Croak-Quest",
     demoUrl: "https://your-task-app-demo.com"
   },
@@ -60,7 +59,7 @@ const projects = [
     imageUrl: "/images/projects/ESGClassification.png",
     title: "ESG Classification",
     description: "A task management application with drag-and-drop functionality and team collaboration.",
-    technologies: ["Vue.js", "Firebase", "Tailwind CSS"],
+    technologies: ["PyTorch", "ESG-BERT", "Python", "spaCy", "Matplotlib", "Seaborn" ],
     githubUrl: "https://github.com/julianchen24/ESG-Classification-Heatmap",
     demoUrl: "https://your-task-app-demo.com"
   },
@@ -68,7 +67,7 @@ const projects = [
     imageUrl: "/images/projects/WaapPhoto.png",
     title: "Workforce Adjustment Alternation Portal",
     description: "A task management application with drag-and-drop functionality and team collaboration.",
-    technologies: ["Vue.js", "Firebase", "Tailwind CSS"],
+    technologies: ["Django", "PostgreSQL", "Bootstrap", "Python","JavaScript"],
     githubUrl: "https://github.com/julianchen24/Workforce-Adjustment-Alternation-Portal",
     demoUrl: "https://your-task-app-demo.com"
   },
@@ -76,7 +75,7 @@ const projects = [
     imageUrl: "/images/projects/PowerPrompt.png",
     title: "PowerPrompt",
     description: "A task management application with drag-and-drop functionality and team collaboration.",
-    technologies: ["Vue.js", "Firebase", "Tailwind CSS"],
+    technologies: ["React", "JavaScript", "Vite", "Chrome Storage API"],
     githubUrl: "https://github.com/julianchen24/PowerPrompt",
     demoUrl: "https://your-task-app-demo.com"
   },
@@ -84,7 +83,7 @@ const projects = [
     imageUrl: "https://via.placeholder.com/400x300",
     title: "WhisperAI",
     description: "A task management application with drag-and-drop functionality and team collaboration.",
-    technologies: ["Vue.js", "Firebase", "Tailwind CSS"],
+    technologies: ["FastAPI", "Python", "Gradio"],
     githubUrl: "https://github.com/julianchen24/Whisper-AI-Service",
     demoUrl: "https://your-task-app-demo.com"
   },
@@ -92,7 +91,7 @@ const projects = [
     imageUrl: "/images/projects/FlashCards.png",
     title: "FlashCards",
     description: "A task management application with drag-and-drop functionality and team collaboration.",
-    technologies: ["Vue.js", "Firebase", "Tailwind CSS"],
+    technologies: ["React", "JavaScript", "HTML", "CSS"],
     githubUrl: "https://github.com/julianchen24/FlashCards",
     demoUrl: "https://your-task-app-demo.com"
   },
@@ -100,7 +99,7 @@ const projects = [
     imageUrl: "/images/projects/CalendarPhoto.png",
     title: "MyCalendar",
     description: "A task management application with drag-and-drop functionality and team collaboration.",
-    technologies: ["Vue.js", "Firebase", "Tailwind CSS"],
+    technologies: ["Java", "Java Swing", "MySQL"],
     githubUrl: "https://github.com/julianchen24/CalendarTool",
     demoUrl: "https://your-task-app-demo.com"
   },
@@ -108,7 +107,7 @@ const projects = [
     imageUrl: "/images/projects/PortfolioLandingPagePhoto.png",
     title: "This Website!",
     description: "A task management application with drag-and-drop functionality and team collaboration.",
-    technologies: ["Vue.js", "Firebase", "Tailwind CSS"],
+    technologies: ["Next.js", "TypeScript", "Tailwind CSS"],
     githubUrl: "https://github.com/julianchen24/julian-portfolio",
     demoUrl: "https://your-task-app-demo.com"
   }

@@ -9,31 +9,31 @@ import TitleCard from '@/components/TitleCard';
 const experiences = [
   {
     title: "Database Analyst",
-    company: "Tech Innovations Inc.",
+    company: "Blue Insight Consultation",
     location: "Vancouver, BC",
-    duration: "2022 - Present",
-    description: "Led development of multiple web applications using React, Next.js, and TypeScript. Implemented CI/CD pipelines and mentored junior developers."
+    duration: "Jan 2025 - Present",
+    description: ""
   },
   {
     title: "Microsoft Azure AI Developer",
-    company: "Digital Solutions Ltd.",
-    location: "Toronto, ON",
-    duration: "2019 - 2022",
-    description: "Developed responsive web applications and implemented modern UI/UX designs. Worked with React, Vue.js, and various backend technologies."
+    company: "Resonate AI | University Of Waterloo",
+    location: "Remote",
+    duration: "Jan 2025 - Apr 2025",
+    description: ""
   },
   {
     title: "Firmware Developer",
-    company: "Digital Solutions Ltd.",
-    location: "Toronto, ON",
-    duration: "2019 - 2022",
-    description: "Developed responsive web applications and implemented modern UI/UX designs. Worked with React, Vue.js, and various backend technologies."
+    company: "Midnight Sun Solar Car Design Team",
+    location: "Waterloo, ON",
+    duration: "Sep 2024 - Dec 2024",
+    description: ""
   },
   {
     title: "Teaching Assistant",
-    company: "WebCraft Studios",
-    location: "Montreal, QC",
-    duration: "2017 - 2019",
-    description: "Started career working on frontend development with HTML, CSS, and JavaScript. Contributed to various projects and gained experience in modern web technologies."
+    company: "Kumon Math and Reading Centre",
+    location: "Vancouver, BC",
+    duration: "Mar 2022 - Sep 2024",
+    description: ""
   }
 ];
 

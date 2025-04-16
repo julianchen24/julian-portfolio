@@ -60,7 +60,7 @@ export default function Footer() {
           </div>
           
           {/* Copyright */}
-          <p>© {new Date().getFullYear()} Julian. All rights reserved.</p>
+          <p>© {new Date().getFullYear()} Julian Chen. All rights reserved.</p>
         </div>
       </div>
     </footer>

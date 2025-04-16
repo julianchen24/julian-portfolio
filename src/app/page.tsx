@@ -537,9 +537,9 @@ export default function Home() {
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-8">About Me</h2>
             <p className="text-lg text-gray-700 dark:text-gray-300 mb-12">
-            Hi! I'm Julian, a Computer Engineering student at the University of Waterloo passionate about using technology to geuinely help others 
-            and solve real-world problems. I'm especially interested in full-stack development, machine learning, and cloud computing.
-            I'm originally from Vancouver, BC, but I'll be studying in Waterloo, ON for the next few years.
+            Hi! I am Julian, a Computer Engineering student at the University of Waterloo passionate about using technology to geuinely help others 
+            and solve real-world problems. I am especially interested in full-stack development, machine learning, and cloud computing.
+            I am originally from Vancouver, BC, but I will be studying in Waterloo, ON for the next few years.
             Beyond my tech interests, I love trying new foods, skiing, basketball, running, skating, photography, and chasing sunsets.
             </p>
           </div>

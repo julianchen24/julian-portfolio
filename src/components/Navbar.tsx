@@ -161,7 +161,7 @@ export default function Navbar() {
               </a>
               
               <a 
-                href="https://drive.google.com/file/d/1FbjZrUj9J0fUzzxyrwgCoRruT6dAkCAP/view?usp=sharing" 
+                href="https://drive.google.com/file/d/1e3OzUYErcLxsp7aBjc4k-QrHCEShGcVj/view" 
                 target="_blank" 
                 rel="noopener noreferrer" 
                 className={`px-3 py-2 rounded-md text-lg font-medium transition-all duration-300 ${

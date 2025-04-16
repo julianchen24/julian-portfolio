@@ -80,13 +80,13 @@ const ExperienceCard: React.FC<ExperienceCardProps> = ({
         <div className="absolute top-8 left-1/2 transform -translate-x-1/2 w-5 h-5 rounded-full bg-blue-500 border-4 border-white dark:border-gray-800 timeline-dot"></div>
       </div>
 
-      {/* Content card */}
+      {/* Content card - More horizontal layout */}
       <div 
-        className={`relative z-20 bg-white dark:bg-gray-700 rounded-lg shadow-md p-6 md:w-[46%] mb-12 transition-all duration-300 hover:shadow-xl hover:scale-[1.02] ${isEven ? 'md:mr-[8%]' : 'md:ml-[8%]'}`}
+        className={`relative z-20 bg-white dark:bg-gray-700 rounded-lg shadow-md p-6 md:w-[46%] mb-8 transition-all duration-300 hover:shadow-xl hover:scale-[1.02] ${isEven ? 'md:mr-[8%]' : 'md:ml-[8%]'}`}
       >
-        <div className="flex flex-col sm:flex-row gap-6">
+        <div className="flex gap-4">
           {/* Left side - Image */}
-          <div className="flex-shrink-0 w-full sm:w-24 h-24 bg-gray-200 dark:bg-gray-600 rounded-lg overflow-hidden mb-4 sm:mb-0">
+          <div className="flex-shrink-0 w-16 h-16 bg-gray-200 dark:bg-gray-600 rounded-lg overflow-hidden">
             <div className="relative w-full h-full">
               <Image 
                 src={imageUrl}
@@ -99,33 +99,38 @@ const ExperienceCard: React.FC<ExperienceCardProps> = ({
 
           {/* Right side - Content */}
           <div className="flex-grow">
-            <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start mb-2">
-              <h2 className="text-xl font-semibold text-gray-900 dark:text-white">{title}</h2>
-              {company && (
-                <span className="text-md text-gray-700 dark:text-gray-300 mt-1 sm:mt-0 sm:ml-2">
-                  {company}
-                </span>
-              )}
+            {/* Top Row - Title, Company, Duration */}
+            <div className="flex flex-wrap justify-between items-start mb-2">
+              <div className="mr-4">
+                <h2 className="text-lg font-semibold text-gray-900 dark:text-white">{title}</h2>
+                {company && (
+                  <span className="text-sm text-gray-700 dark:text-gray-300">
+                    {company}
+                  </span>
+                )}
+              </div>
+              <div className="flex flex-col items-end">
+                <p className="text-sm text-gray-500 dark:text-gray-400">{duration}</p>
+                {location && (
+                  <span className="text-sm text-gray-500 dark:text-gray-400">
+                    {location}
+                  </span>
+                )}
+              </div>
             </div>
             
-            <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center mb-4">
-              <p className="text-sm text-gray-500 dark:text-gray-400">{duration}</p>
-              {location && (
-                <span className="text-sm text-gray-500 dark:text-gray-400 mt-1 sm:mt-0">
-                  {location}
-                </span>
-              )}
-            </div>
-            
-            <div className="text-gray-700 dark:text-gray-300">
-              {descriptionPoints.map((point, index) => (
-                point ? (
-                  <div key={index} className="mb-2 flex">
-                    <div className="mr-2 flex-shrink-0">•</div>
-                    <div>{renderFormattedText(point.startsWith('•') ? point.substring(1).trim() : point)}</div>
-                  </div>
-                ) : null
-              ))}
+            {/* Description - Horizontal Layout */}
+            <div className="text-md text-gray-700 dark:text-gray-300">
+              <div className="flex flex-wrap gap-x-4">
+                {descriptionPoints.map((point, idx) => (
+                  point ? (
+                    <div key={idx} className="flex mb-1 last:mb-0 w-full">
+                      <div className="mr-2 flex-shrink-0">•</div>
+                      <div>{renderFormattedText(point.startsWith('•') ? point.substring(1).trim() : point)}</div>
+                    </div>
+                  ) : null
+                ))}
+              </div>
             </div>
           </div>
         </div>

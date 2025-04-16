@@ -2,6 +2,7 @@
 
 import React, { useEffect, useRef, useState } from "react";
 import ProfileCard from "@/components/ProfileCard";
+import SkillsSection from "@/components/SkillsSection";
 
 // Define types for our components
 interface MountainProps {
@@ -25,6 +26,7 @@ export default function Home() {
   const containerRef = useRef<HTMLDivElement>(null);
   const heroSectionRef = useRef<HTMLElement>(null);
   const profileCardRef = useRef<HTMLElement>(null);
+  const skillsSectionRef = useRef<HTMLElement>(null);
   const [isMounted, setIsMounted] = useState(false);
   
   // Typing animation states
@@ -527,6 +529,15 @@ export default function Home() {
       >
         <ProfileCard />
       </section>
+
+      {/* Skills Section */}
+      <section
+        ref={skillsSectionRef}
+        className="min-h-screen bg-white dark:bg-gray-900 py-20 flex items-center snap-start"
+      >
+        <SkillsSection />
+      </section>
+
       {/* About Section */}
       <div className="snap-none"> {/* Wrap in div to break out of snap behavior */}
         <section
@@ -548,6 +559,7 @@ export default function Home() {
     </div>
   );
 }
+
 // ParallaxLayer Component
 function ParallaxLayer({ speed, zIndex, children }: ParallaxProps) {
   return (

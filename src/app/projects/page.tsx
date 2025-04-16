@@ -32,7 +32,7 @@ const projects = [
     demoUrl: "https://your-task-app-demo.com"
   },
   {
-    imageUrl: "https://via.placeholder.com/400x300",
+    imageUrl: "/images/projects/AIVectorizerPhoto.png",
     title: "AI Vectorizer",
     description: "A full-stack e-commerce platform with product management and payment processing.",
     technologies: ["Tailwind CSS", "React", "FastAPI", "D3.js", "NumPy"],
@@ -80,7 +80,7 @@ const projects = [
     demoUrl: "https://your-task-app-demo.com"
   },
   {
-    imageUrl: "https://via.placeholder.com/400x300",
+    imageUrl: "/images/projects/WhisperAIDemo.png",
     title: "WhisperAI",
     description: "A task management application with drag-and-drop functionality and team collaboration.",
     technologies: ["FastAPI", "Python", "Gradio"],

@@ -39,7 +39,7 @@ const skillCategories: SkillCategory[] = [
 
 export default function SkillsSection() {
   const [activeCategory, setActiveCategory] = useState<string>(skillCategories[0].name);
-  
+ 
   // Function to handle category change
   const handleCategoryChange = (categoryName: string) => {
     setActiveCategory(categoryName);
@@ -51,12 +51,14 @@ export default function SkillsSection() {
   return (
     <section className="py-16 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       {/* Card container with gradient background */}
-      <div className="border border-gray-200 dark:border-gray-700 rounded-md shadow-md p-6 md:p-8 
+      <div className="border border-gray-200 dark:border-gray-700 rounded-md shadow-md p-6 md:p-8
         bg-gradient-to-b from-[#83AEE2]/30 to-white dark:from-[#4D7CB6]/30 dark:to-gray-800">
-        <h2 className="text-4xl font-bold text-[#4D7CB6] dark:text-[#83AEE2] mb-12">
+        
+        {/* Blue title matching the image */}
+        <h2 className="text-4xl font-bold mb-12 text-[#6989BE] dark:text-[#83AEE2]">
           Skills & Technologies
         </h2>
-        
+       
         {/* Category Tabs - More rectangular */}
         <div className="flex overflow-x-auto mb-8 pb-2">
           <div className="flex bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm rounded-md p-1 w-full max-w-4xl mx-auto border border-gray-100 dark:border-gray-700">
@@ -66,8 +68,8 @@ export default function SkillsSection() {
                 onClick={() => handleCategoryChange(category.name)}
                 className={`
                   flex-1 py-2 px-4 rounded-md text-center text-sm sm:text-base transition-all duration-300
-                  ${activeCategory === category.name 
-                    ? 'bg-[#83AEE2]/20 dark:bg-[#4D7CB6]/30 text-[#4D7CB6] dark:text-[#83AEE2] font-medium border border-[#83AEE2]/30 dark:border-[#4D7CB6]/40' 
+                  ${activeCategory === category.name
+                    ? 'bg-[#83AEE2]/20 dark:bg-[#4D7CB6]/30 text-[#4D7CB6] dark:text-[#83AEE2] font-medium border border-[#83AEE2]/30 dark:border-[#4D7CB6]/40'
                     : 'text-gray-600 dark:text-gray-300 hover:text-[#4D7CB6] dark:hover:text-[#83AEE2] hover:bg-[#83AEE2]/10 dark:hover:bg-[#4D7CB6]/20'
                   }
                 `}
@@ -78,7 +80,7 @@ export default function SkillsSection() {
             ))}
           </div>
         </div>
-        
+       
         {/* Skills Display - More rectangular with subtle gradient */}
         <div className="flex flex-wrap gap-3 justify-center">
           {activeSkills.map((skill) => (

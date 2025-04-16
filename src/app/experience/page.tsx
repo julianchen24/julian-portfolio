@@ -11,29 +11,33 @@ const experiences = [
     title: "Database Analyst",
     company: "Blue Insight Consultation",
     location: "Vancouver, BC",
-    duration: "Jan 2025 - May 2025",
-    description: "• Maintained **PL/SQL** procedures and developed custom scripts using **Toad for Oracle** to analyze, extract, cleanse, and filter employee management data for enterprise-scale clients\n• Monitored critical HRIS components within a multi-tier architecture including virtualized applications, Windows-based web services, and Oracle databases on Linux servers, ensuring consistent system performance\n• Supported SDLC with regression testing and debugging of Oracle packages across Development, QA, UAT, and Production environments, cutting maintenance downtime by **25%**"
+    duration: "Jan 2025 - Present",
+    description: "Maintained **PL/SQL** procedures and developed custom scripts using **Toad for Oracle** to analyze, extract, cleanse, and filter employee management data for enterprise-scale clients\nMonitored critical HRIS components within a multi-tier architecture including virtualized applications, Windows-based web services, and Oracle databases on Linux servers, ensuring consistent system performance\nSupported SDLC with regression testing and debugging of Oracle packages across Development, QA, UAT, and Production environments, cutting maintenance downtime by **25%**",
+    imageUrl: "/images/experiences/BlueInsight.png"
   },
   {
     title: "Microsoft Azure AI Developer",
     company: "Resonate AI | University Of Waterloo",
     location: "Remote — Waterloo, ON",
     duration: "Jan 2025 - Apr 2025",
-    description: "• Implemented **ESG-BERT** NLP system using **PyTorch**, spaCy, and Matplotlib/Seaborn for sustainability report classification and sentiment analysis, achieving **85%** **classification accuracy** and generating clear heatmaps\n• **Led team of 6** in preparing/presenting ESG analytics reports with heatmaps & detailed insights to entire startup"
+    description: "Implemented **ESG-BERT** NLP system using **PyTorch**, spaCy, and Matplotlib/Seaborn for sustainability report classification and sentiment analysis, achieving **85%** **classification accuracy** and generating clear heatmaps\n**Led team of 6** in preparing/presenting ESG analytics reports with heatmaps & detailed insights to entire startup",
+    imageUrl: "/images/experiences/ResonateAI.jpg"
   },
   {
     title: "Firmware Developer",
     company: "Midnight Sun Solar Car Design Team",
     location: "Waterloo, ON",
     duration: "Sep 2024 - Dec 2024",
-    description: "• Designed a user-friendly driver for **STM32** tamper detection and interrupt handling, achieving **100%** **backup register test** **coverage** to ensure secure access control during power loss\n• Configured a multi-channel ADC driver in **C/C++** using **I2C** **communication** for continuous signal conversion"
+    description: "Designed a user-friendly driver for **STM32** tamper detection and interrupt handling, achieving **100%** **backup register test** **coverage** to ensure secure access control during power loss\nConfigured a multi-channel ADC driver in **C/C++** using **I2C** **communication** for continuous signal conversion",
+    imageUrl: "/images/experiences/MidnightSun.jpg"
   },
   {
     title: "Teaching Assistant",
     company: "Kumon Math and Reading Centre",
     location: "Vancouver, BC",
     duration: "Mar 2022 - Sep 2024",
-    description: "• Documented student progress with structured reports, boosting parent satisfaction ratings by **12%**\n• Guided **25+** students in Math and English, simplifying complex concepts with personalized support"
+    description: "Documented student progress with structured reports, boosting parent satisfaction ratings by **12%**\nGuided **25+** students in Math and English, simplifying complex concepts with personalized support",
+    imageUrl: "/images/experiences/Kumon.png"
   }
 ];
 
@@ -80,6 +84,7 @@ export default function ExperiencePage() {
               location={experience.location}
               duration={experience.duration}
               description={experience.description}
+              imageUrl={experience.imageUrl}
             />
           ))}
         </div>

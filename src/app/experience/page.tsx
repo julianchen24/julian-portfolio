@@ -11,7 +11,7 @@ const experiences = [
     title: "Database Analyst",
     company: "Blue Insight Consultation",
     location: "Vancouver, BC",
-    duration: "Jan 2025 - Present",
+    duration: "Jan 2025 - May 2025",
     description: "• Maintained **PL/SQL** procedures and developed custom scripts using **Toad for Oracle** to analyze, extract, cleanse, and filter employee management data for enterprise-scale clients\n• Monitored critical HRIS components within a multi-tier architecture including virtualized applications, Windows-based web services, and Oracle databases on Linux servers, ensuring consistent system performance\n• Supported SDLC with regression testing and debugging of Oracle packages across Development, QA, UAT, and Production environments, cutting maintenance downtime by **25%**"
   },
   {

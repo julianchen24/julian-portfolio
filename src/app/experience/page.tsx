@@ -1,11 +1,10 @@
 "use client";
 
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import Link from 'next/link';
 import ExperienceCard from '@/components/ExperienceCard';
 import TitleCard from '@/components/TitleCard';
 
-// Experience data array
 const experiences = [
   {
     title: "Database Analyst",
@@ -42,6 +41,32 @@ const experiences = [
 ];
 
 export default function ExperiencePage() {
+  const timelineRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            const timeline = entry.target;
+            timeline.classList.add('animate-timeline');
+          }
+        });
+      },
+      { threshold: 0.1 }
+    );
+
+    if (timelineRef.current) {
+      observer.observe(timelineRef.current);
+    }
+
+    return () => {
+      if (timelineRef.current) {
+        observer.unobserve(timelineRef.current);
+      }
+    };
+  }, []);
+
   return (
     <main className="min-h-screen bg-white dark:bg-gray-800">
       {/* Gradient background container for TitleCard */}
@@ -52,7 +77,7 @@ export default function ExperiencePage() {
           description="A timeline of my career path and professional achievements."
         />
       </div>
-      
+
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
         <div className="mb-8 flex items-center">
           <Link 
@@ -73,9 +98,11 @@ export default function ExperiencePage() {
             Back to Home
           </Link>
         </div>
-        
-        <div className="space-y-12">
-          {/* Map over experiences array to render ExperienceCard components */}
+
+        {/* Timeline container */}
+        <div ref={timelineRef} className="relative pt-8 pb-20">
+          <div className="absolute left-1/2 transform -translate-x-1/2 top-0 h-full w-1 bg-blue-200 dark:bg-blue-900 timeline-line"></div>
+
           {experiences.map((experience, index) => (
             <ExperienceCard
               key={index}
@@ -85,8 +112,12 @@ export default function ExperiencePage() {
               duration={experience.duration}
               description={experience.description}
               imageUrl={experience.imageUrl}
+              index={index}
             />
           ))}
+
+          {/* Timeline end dot */}
+          <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-5 h-5 rounded-full bg-blue-500 border-4 border-white dark:border-gray-800 timeline-dot"></div>
         </div>
       </div>
     </main>

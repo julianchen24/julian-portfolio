@@ -54,3 +54,70 @@ section.content {
   display: flex;
   flex-direction: column;
 }
+
+/* Timeline animations */
+@keyframes timeline-grow {
+  0% {
+    transform: scaleY(0);
+    transform-origin: top;
+  }
+  100% {
+    transform: scaleY(1);
+    transform-origin: top;
+  }
+}
+
+@keyframes dot-pulse {
+  0%, 100% {
+    transform: scale(1) translate(-50%, 0);
+    box-shadow: 0 0 0 0 rgba(59, 130, 246, 0.4);
+  }
+  50% {
+    transform: scale(1.2) translate(-40%, 0);
+    box-shadow: 0 0 0 10px rgba(59, 130, 246, 0);
+  }
+}
+
+@keyframes slide-in-right {
+  0% {
+    transform: translateX(100px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slide-in-left {
+  0% {
+    transform: translateX(-100px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+.timeline-line {
+  animation: timeline-grow 1.5s ease-out forwards;
+  transform-origin: top;
+}
+
+.timeline-dot {
+  animation: dot-pulse 2s infinite;
+}
+
+.animate-timeline .timeline-line {
+  animation: timeline-grow 1.5s ease-out forwards;
+}
+
+/* Card animations based on position */
+.slide-right {
+  animation: slide-in-right 0.6s ease-out forwards;
+}
+
+.slide-left {
+  animation: slide-in-left 0.6s ease-out forwards;
+}

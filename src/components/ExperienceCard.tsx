@@ -1,6 +1,6 @@
 "use client";
 
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import Image from 'next/image';
 
 interface ExperienceCardProps {
@@ -10,6 +10,7 @@ interface ExperienceCardProps {
   company?: string;
   location?: string;
   imageUrl?: string;
+  index: number;
 }
 
 const ExperienceCard: React.FC<ExperienceCardProps> = ({
@@ -18,8 +19,11 @@ const ExperienceCard: React.FC<ExperienceCardProps> = ({
   description,
   company,
   location,
-  imageUrl = '/images/placeholder.png' // Default placeholder image
+  imageUrl = '/images/placeholder.png',
+  index
 }) => {
+  const cardRef = useRef<HTMLDivElement>(null);
+  
   // Split the description by newline characters to create an array of points
   const descriptionPoints = description.split('\n');
 
@@ -38,50 +42,91 @@ const ExperienceCard: React.FC<ExperienceCardProps> = ({
     });
   };
 
-  return (
-    <div className="bg-white dark:bg-gray-700 rounded-lg shadow-md p-6 transition-all duration-300 hover:shadow-xl hover:scale-[1.02]">
-      <div className="flex flex-col md:flex-row gap-6">
-        {/* Left side - Image */}
-        <div className="flex-shrink-0 w-full md:w-32 h-32 bg-gray-200 dark:bg-gray-600 rounded-lg overflow-hidden mb-4 md:mb-0">
-          <div className="relative w-full h-full">
-            <Image 
-              src={imageUrl}
-              alt={`${company || title} logo`}
-              fill
-              className="object-cover"
-            />
-          </div>
-        </div>
+  // Add scroll animation using Intersection Observer
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('opacity-100', 'translate-y-0');
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.1 }
+    );
 
-        {/* Right side - Content */}
-        <div className="flex-grow">
-          <div className="flex flex-col md:flex-row md:justify-between md:items-start mb-2">
-            <h2 className="text-2xl font-semibold text-gray-900 dark:text-white">{title}</h2>
-            {company && (
-              <span className="text-lg text-gray-700 dark:text-gray-300 mt-1 md:mt-0">
-                {company}
-              </span>
-            )}
+    if (cardRef.current) {
+      observer.observe(cardRef.current);
+    }
+
+    return () => {
+      if (cardRef.current) {
+        observer.unobserve(cardRef.current);
+      }
+    };
+  }, []);
+
+  // Determine the side of the timeline for alternating layout
+  const isEven = index % 2 === 0;
+
+  return (
+    <div 
+      ref={cardRef}
+      className={`relative flex ${isEven ? 'md:flex-row' : 'md:flex-row-reverse'} items-center opacity-0 translate-y-8 transform transition duration-1000 ease-out`}
+    >
+      {/* Timeline line and dot */}
+      <div className="absolute z-10 left-1/2 md:left-[50%] transform -translate-x-1/2 top-0 bottom-0 w-1 bg-blue-200 dark:bg-blue-900 timeline-line">
+        <div className="absolute top-8 left-1/2 transform -translate-x-1/2 w-5 h-5 rounded-full bg-blue-500 border-4 border-white dark:border-gray-800 timeline-dot"></div>
+      </div>
+
+      {/* Content card */}
+      <div 
+        className={`relative z-20 bg-white dark:bg-gray-700 rounded-lg shadow-md p-6 md:w-[46%] mb-12 transition-all duration-300 hover:shadow-xl hover:scale-[1.02] ${isEven ? 'md:mr-[8%]' : 'md:ml-[8%]'}`}
+      >
+        <div className="flex flex-col sm:flex-row gap-6">
+          {/* Left side - Image */}
+          <div className="flex-shrink-0 w-full sm:w-24 h-24 bg-gray-200 dark:bg-gray-600 rounded-lg overflow-hidden mb-4 sm:mb-0">
+            <div className="relative w-full h-full">
+              <Image 
+                src={imageUrl}
+                alt={`${company || title} logo`}
+                fill
+                className="object-cover"
+              />
+            </div>
           </div>
-          
-          <div className="flex flex-col md:flex-row md:justify-between md:items-center mb-4">
-            <p className="text-sm text-gray-500 dark:text-gray-400">{duration}</p>
-            {location && (
-              <span className="text-sm text-gray-500 dark:text-gray-400 mt-1 md:mt-0">
-                {location}
-              </span>
-            )}
-          </div>
-          
-          <div className="text-gray-700 dark:text-gray-300">
-            {descriptionPoints.map((point, index) => (
-              point ? (
-                <div key={index} className="mb-2 flex">
-                  <div className="mr-2">•</div>
-                  <div>{renderFormattedText(point.startsWith('•') ? point.substring(1).trim() : point)}</div>
-                </div>
-              ) : null
-            ))}
+
+          {/* Right side - Content */}
+          <div className="flex-grow">
+            <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start mb-2">
+              <h2 className="text-xl font-semibold text-gray-900 dark:text-white">{title}</h2>
+              {company && (
+                <span className="text-md text-gray-700 dark:text-gray-300 mt-1 sm:mt-0 sm:ml-2">
+                  {company}
+                </span>
+              )}
+            </div>
+            
+            <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center mb-4">
+              <p className="text-sm text-gray-500 dark:text-gray-400">{duration}</p>
+              {location && (
+                <span className="text-sm text-gray-500 dark:text-gray-400 mt-1 sm:mt-0">
+                  {location}
+                </span>
+              )}
+            </div>
+            
+            <div className="text-gray-700 dark:text-gray-300">
+              {descriptionPoints.map((point, index) => (
+                point ? (
+                  <div key={index} className="mb-2 flex">
+                    <div className="mr-2 flex-shrink-0">•</div>
+                    <div>{renderFormattedText(point.startsWith('•') ? point.substring(1).trim() : point)}</div>
+                  </div>
+                ) : null
+              ))}
+            </div>
           </div>
         </div>
       </div>

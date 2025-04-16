@@ -21,7 +21,7 @@ const projects = [
     description: "A task management application with drag-and-drop functionality and team collaboration.",
     technologies: ["Docker", "Python", "FastAPI", "JavaScript"],
     githubUrl: "https://github.com/julianchen24/Termium-Plus-API",
-    demoUrl: "https://your-task-app-demo.com"
+    demoUrl: "https://api.julianchen.net"
   },
   {
     imageUrl: "https://via.placeholder.com/400x300",

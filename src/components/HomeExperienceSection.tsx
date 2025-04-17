@@ -187,11 +187,13 @@ const HomeExperienceSection: React.FC = () => {
           </div>
         </div>
         
-        {/* View All Experiences Link */}
+        {/* View All Experiences Link - Updated with gradient background */}
         <div className="mt-10 text-center">
           <Link
             href="/experience"
-            className="inline-flex items-center px-6 py-3 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition-colors duration-300"
+            className="inline-flex items-center px-6 py-3 text-white rounded-md shadow-md hover:shadow-lg transition-all duration-300
+              bg-gradient-to-b from-[#83AEE2] to-[#4D7CB6] dark:from-[#83AEE2] dark:to-[#4D7CB6] 
+              hover:from-[#83AEE2] hover:to-[#4165AA] dark:hover:from-[#83AEE2] dark:hover:to-[#4165AA]"
           >
             View All Experiences
             <svg className="w-4 h-4 ml-2" fill="none" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" viewBox="0 0 24 24" stroke="currentColor">

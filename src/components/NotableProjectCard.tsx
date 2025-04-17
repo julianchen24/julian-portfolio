@@ -13,7 +13,7 @@ const NotableProjectCard: React.FC = () => {
         
         {/* Blue title matching the image */}
         <h2 className="text-4xl font-bold mb-8 text-[#6989BE] dark:text-[#83AEE2]">
-          Notable Project
+        ⭐ Notable Project ⭐
         </h2>
         
         <div className="flex flex-col md:flex-row gap-8 mb-6">

@@ -9,23 +9,24 @@ import TitleCard from '@/components/TitleCard';
 const projects = [
   {
     imageUrl: "/images/projects/CodeSagePhoto.png",
-    title: "CodeSage (Coming Soon)",
+    title: "⭐ CodeSage (Coming Soon) ⭐",
     description: "A personal portfolio website built with Next.js and Tailwind CSS.",
     technologies: ["TypeScript", "Express", "React", "PostgreSQL"],
     githubUrl: "https://github.com/orgs/codeVisualizer2/repositories",
-    demoUrl: "https://your-live-demo-url.com"
+    showDemo: false
   },
   {
     imageUrl: "/images/projects/TermiumPlusAPI.png",
-    title: "Termium Plus API",
-    description: "A task management application with drag-and-drop functionality and team collaboration.",
+    title: "⭐ Termium Plus API ⭐",
+    description: "An API service for Canada's TERMIUM Plus® terminology database, providing access to specialized multilingual terms across English, French, Spanish, and Portuguese.",
     technologies: ["Docker", "Python", "FastAPI", "JavaScript"],
     githubUrl: "https://github.com/julianchen24/Termium-Plus-API",
-    demoUrl: "https://api.julianchen.net"
+    demoUrl: "https://api.julianchen.net/static/index.html",
+    showDemo: true // Only this project will show the Live Demo button
   },
   {
     imageUrl: "https://via.placeholder.com/400x300",
-    title: "FluentAI",
+    title: "⭐ FluentAI ⭐",
     description: "A task management application with drag-and-drop functionality and team collaboration.",
     technologies: ["Docker", "Python", "FastAPI"],
     githubUrl: "https://github.com/julianchen24/FluentAI",
@@ -33,7 +34,7 @@ const projects = [
   },
   {
     imageUrl: "/images/projects/AIVectorizerPhoto.png",
-    title: "AI Vectorizer",
+    title: "⭐ AI Vectorizer ⭐",
     description: "A full-stack e-commerce platform with product management and payment processing.",
     technologies: ["Tailwind CSS", "React", "FastAPI", "D3.js", "NumPy"],
     githubUrl: "https://github.com/julianchen24/AI-Vectorizer",
@@ -41,7 +42,7 @@ const projects = [
   },
   {
     imageUrl: "/images/projects/LinkComPhoto.jpg",
-    title: "LinkCom",
+    title: "⭐ LinkCom ⭐",
     description: "A task management application with drag-and-drop functionality and team collaboration.",
     technologies: ["STM32", "C", "Altium", "Fusion360"],
     githubUrl: "https://github.com/julianchen24/LinkCom",
@@ -49,7 +50,7 @@ const projects = [
   },
   {
     imageUrl: "/images/projects/CroakQuestPhoto.png",
-    title: "Croak Quest",
+    title: "⭐ Croak Quest ⭐",
     description: "A task management application with drag-and-drop functionality and team collaboration.",
     technologies: ["C#", "Unity", "Leap Motion"],
     githubUrl: "https://github.com/julianchen24/Croak-Quest",
@@ -72,7 +73,7 @@ const projects = [
     demoUrl: "https://your-task-app-demo.com"
   },
   {
-    imageUrl: "/images/projects/PowerPrompt.png",
+    imageUrl: "/images/projects/PowerPromptPhoto.png",
     title: "PowerPrompt",
     description: "A task management application with drag-and-drop functionality and team collaboration.",
     technologies: ["React", "JavaScript", "Vite", "Chrome Storage API"],
@@ -105,7 +106,7 @@ const projects = [
   },
   {
     imageUrl: "/images/projects/PortfolioLandingPagePhoto.png",
-    title: "This Website!",
+    title: "⭐ This Website! ⭐",
     description: "A task management application with drag-and-drop functionality and team collaboration.",
     technologies: ["Next.js", "TypeScript", "Tailwind CSS"],
     githubUrl: "https://github.com/julianchen24/julian-portfolio",
@@ -158,6 +159,7 @@ export default function ProjectsPage() {
               technologies={project.technologies}
               githubUrl={project.githubUrl}
               demoUrl={project.demoUrl}
+              showDemo={project.showDemo} // Pass the showDemo property
             />
           ))}
         </div>

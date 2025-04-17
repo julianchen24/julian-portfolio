@@ -9,6 +9,7 @@ interface ProjectCardProps {
   technologies: string[];
   githubUrl: string;
   demoUrl: string;
+  showDemo?: boolean;
 }
 
 const ProjectCard: React.FC<ProjectCardProps> = ({
@@ -17,11 +18,12 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
   description,
   technologies,
   githubUrl,
-  demoUrl
+  demoUrl,
+  showDemo = false // Default to false
 }) => {
   return (
     <div className="bg-white dark:bg-gray-800 rounded-lg shadow-md overflow-hidden transition-all duration-300 hover:shadow-xl hover:scale-[1.02]">
-      {/* More balanced image container with aspect ratio */}
+      {/* Image container */}
       <div className="relative h-90 bg-gray-300 dark:bg-gray-700 overflow-hidden">
         <img
           src={imageUrl}
@@ -56,17 +58,21 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
             </svg>
             View Project
           </a>
-          <a
-            href={demoUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center text-blue-600 hover:text-blue-800 transition-colors"
-          >
-            <svg className="w-5 h-5 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
-            </svg>
-            Live Demo
-          </a>
+          
+          {/* Only render demo button if showDemo is explicitly true */}
+          {showDemo === true && (
+            <a
+              href={demoUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center text-blue-600 hover:text-blue-800 transition-colors"
+            >
+              <svg className="w-5 h-5 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+              </svg>
+              Live Demo
+            </a>
+          )}
         </div>
       </div>
     </div>

@@ -37,7 +37,7 @@ export default function ProfileCard() {
             </p>
             
             {/* About Me Section */}
-            <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-2">
+            <h2 className="text-xl font-bold text-gray-900 dark:text-white mb-2">
               About Me
             </h2>
             <div className="w-full mb-6">

@@ -24,13 +24,8 @@ interface ParallaxProps {
 export default function Home() {
   const parallaxRef = useRef<HTMLDivElement>(null);
   const canvasRef = useRef<HTMLCanvasElement>(null);
-  const aboutSectionRef = useRef<HTMLElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
   const heroSectionRef = useRef<HTMLElement>(null);
-  const profileCardRef = useRef<HTMLElement>(null);
-  const skillsSectionRef = useRef<HTMLElement>(null);
-  const experienceSectionRef = useRef<HTMLElement>(null);
-  const notableProjectRef = useRef<HTMLElement>(null);
   const [isMounted, setIsMounted] = useState(false);
   
   // Typing animation states
@@ -365,13 +360,12 @@ export default function Home() {
   return (
     <div 
       ref={containerRef} 
-      className="h-auto overflow-y-auto snap-y snap-mandatory"
+      className="h-auto overflow-y-auto"
     >
-      {/* Parallax Landing Section */}
+      {/* Parallax Landing Section - Keep this fullscreen */}
       <section 
         ref={heroSectionRef}
-        className="relative h-screen overflow-hidden snap-start"
-        style={{ scrollSnapAlign: 'start' }}
+        className="relative h-screen overflow-hidden"
       >
         {/* Canvas for star animation */}
         <canvas 
@@ -526,37 +520,28 @@ export default function Home() {
         </div>
       </section>
       
-      {/* Profile Card Section */}
-      <section 
-        ref={profileCardRef}
-        className="min-h-screen bg-white dark:bg-gray-900 py-20 flex items-center justify-center snap-start"
-      >
-        <ProfileCard />
-      </section>
+      {/* Content sections with reduced spacing */}
+      <div className="bg-white dark:bg-gray-900">
+        {/* Profile Card Section */}
+        <section className="py-12">
+          <ProfileCard />
+        </section>
 
-      {/* Notable Project Section */}
-      <section 
-        ref={notableProjectRef}
-        className="min-h-screen bg-white dark:bg-gray-900 py-16 flex items-center justify-center snap-start"
-      >
-        <NotableProjectCard />
-      </section>
+        {/* Notable Project Section */}
+        <section className="py-12">
+          <NotableProjectCard />
+        </section>
 
-      {/* Experience Section */}
-      <section 
-        ref={experienceSectionRef}
-        className="min-h-screen bg-white dark:bg-gray-900 py-16 flex items-center justify-center snap-start"
-      >
-        <HomeExperienceSection />
-      </section>
+        {/* Experience Section */}
+        <section className="py-12">
+          <HomeExperienceSection />
+        </section>
 
-      {/* Skills Section */}
-      <section
-        ref={skillsSectionRef}
-        className="min-h-screen bg-white dark:bg-gray-900 py-20 flex items-center snap-start"
-      >
-        <SkillsSection />
-      </section>
+        {/* Skills Section */}
+        <section className="py-12">
+          <SkillsSection />
+        </section>
+      </div>
     </div>
   );
 }

@@ -65,7 +65,7 @@ const NotableProjectCard: React.FC = () => {
                 bg-gradient-to-b from-[#83AEE2] to-[#4D7CB6] dark:from-[#83AEE2] dark:to-[#4D7CB6] 
                 hover:from-[#83AEE2] hover:to-[#4165AA] dark:hover:from-[#83AEE2] dark:hover:to-[#4165AA]"
             >
-              See More Projects
+              Check Out More Projects
               <svg className="w-4 h-4 ml-2" fill="none" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" viewBox="0 0 24 24" stroke="currentColor">
                 <path d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
               </svg>

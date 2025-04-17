@@ -4,6 +4,7 @@ import React, { useEffect, useRef, useState } from "react";
 import ProfileCard from "@/components/ProfileCard";
 import SkillsSection from "@/components/SkillsSection";
 import HomeExperienceSection from "@/components/HomeExperienceSection";
+import NotableProjectCard from "@/components/NotableProjectCard";
 
 // Define types for our components
 interface MountainProps {
@@ -29,6 +30,7 @@ export default function Home() {
   const profileCardRef = useRef<HTMLElement>(null);
   const skillsSectionRef = useRef<HTMLElement>(null);
   const experienceSectionRef = useRef<HTMLElement>(null);
+  const notableProjectRef = useRef<HTMLElement>(null);
   const [isMounted, setIsMounted] = useState(false);
   
   // Typing animation states
@@ -530,6 +532,14 @@ export default function Home() {
         className="min-h-screen bg-white dark:bg-gray-900 py-20 flex items-center justify-center snap-start"
       >
         <ProfileCard />
+      </section>
+
+      {/* Notable Project Section */}
+      <section 
+        ref={notableProjectRef}
+        className="min-h-screen bg-white dark:bg-gray-900 py-16 flex items-center justify-center snap-start"
+      >
+        <NotableProjectCard />
       </section>
 
       {/* Experience Section */}

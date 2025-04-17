@@ -3,6 +3,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import ProfileCard from "@/components/ProfileCard";
 import SkillsSection from "@/components/SkillsSection";
+import HomeExperienceSection from "@/components/HomeExperienceSection";
 
 // Define types for our components
 interface MountainProps {
@@ -27,6 +28,7 @@ export default function Home() {
   const heroSectionRef = useRef<HTMLElement>(null);
   const profileCardRef = useRef<HTMLElement>(null);
   const skillsSectionRef = useRef<HTMLElement>(null);
+  const experienceSectionRef = useRef<HTMLElement>(null);
   const [isMounted, setIsMounted] = useState(false);
   
   // Typing animation states
@@ -528,6 +530,14 @@ export default function Home() {
         className="min-h-screen bg-white dark:bg-gray-900 py-20 flex items-center justify-center snap-start"
       >
         <ProfileCard />
+      </section>
+
+      {/* Experience Section */}
+      <section 
+        ref={experienceSectionRef}
+        className="min-h-screen bg-white dark:bg-gray-900 py-16 flex items-center justify-center snap-start"
+      >
+        <HomeExperienceSection />
       </section>
 
       {/* Skills Section */}

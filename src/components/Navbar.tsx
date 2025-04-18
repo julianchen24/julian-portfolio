@@ -7,41 +7,39 @@ export default function Navbar() {
   const [darkMode, setDarkMode] = useState(false);
   const [isAtTop, setIsAtTop] = useState(true);
 
-  // Initialize dark mode based on system preference or localStorage
+
   useEffect(() => {
-    // Check if user has a saved preference
+
     const savedMode = localStorage.getItem("darkMode");
     
     if (savedMode) {
       setDarkMode(savedMode === "true");
     } else {
-      // Use system preference as default
+
       const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
       setDarkMode(prefersDark);
     }
   }, []);
 
-  // Add scroll event listener to track if page is at top
+
   useEffect(() => {
     const handleScroll = () => {
-      // Check if window exists (client-side only)
+
       if (typeof window !== 'undefined') {
-        // Set isAtTop to true when scrollY is 0, false otherwise
-        setIsAtTop(window.scrollY < 10); // Using a small threshold to make detection more reliable
+
+        setIsAtTop(window.scrollY < 10); 
       }
     };
 
-    // Set initial state
     handleScroll();
-    
-    // Add event listener
+
     window.addEventListener('scroll', handleScroll, { passive: true });
     
-    // Clean up
+
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // Update the DOM when dark mode changes
+
   useEffect(() => {
     if (darkMode) {
       document.documentElement.classList.add("dark");
@@ -49,7 +47,6 @@ export default function Navbar() {
       document.documentElement.classList.remove("dark");
     }
     
-    // Save preference to localStorage
     localStorage.setItem("darkMode", darkMode.toString());
   }, [darkMode]);
 
@@ -66,12 +63,12 @@ export default function Navbar() {
       }`}
       style={{ 
         backgroundColor: isAtTop ? 'transparent' : undefined,
-        pointerEvents: 'auto' // Ensure clicks are always registered
+        pointerEvents: 'auto' 
       }}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between h-16 items-center">
-          {/* Logo/Brand */}
+
           <div className="flex-shrink-0">
           <Link
             href="/"
@@ -85,7 +82,7 @@ export default function Navbar() {
           </Link>
           </div>
           
-          {/* Navigation Links */}
+
           <div className="hidden md:block">
             <div className="ml-10 flex items-center space-x-4">
             <Link
@@ -129,7 +126,6 @@ export default function Navbar() {
                 Gallery
               </Link>
 
-              {/* GitHub */}
               <a
                 href="https://github.com/julianchen24"
                 target="_blank"
@@ -176,7 +172,6 @@ export default function Navbar() {
             </div>
           </div>
           
-          {/* Dark Mode Toggle */}
           <div className="flex items-center">
             <button
               onClick={toggleDarkMode}

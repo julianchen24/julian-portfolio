@@ -2,7 +2,6 @@
 
 import React, { useState } from 'react';
 
-// Define the skill categories and their items
 interface SkillCategory {
   name: string;
   icon: string;
@@ -40,27 +39,22 @@ const skillCategories: SkillCategory[] = [
 export default function SkillsSection() {
   const [activeCategory, setActiveCategory] = useState<string>(skillCategories[0].name);
  
-  // Function to handle category change
   const handleCategoryChange = (categoryName: string) => {
     setActiveCategory(categoryName);
   };
 
-  // Get the skills for the active category
   const activeSkills = skillCategories.find(cat => cat.name === activeCategory)?.skills || [];
 
   return (
     <section className="py-16 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      {/* Card container with gradient background and hover effects */}
       <div className="border border-gray-200 dark:border-gray-700 rounded-md shadow-md p-6 md:p-8
         bg-gradient-to-b from-[#83AEE2]/30 to-white dark:from-[#4D7CB6]/30 dark:to-gray-800
         transition-all duration-300 hover:shadow-xl hover:translate-y-[-5px] hover:from-[#83AEE2]/40 hover:to-white dark:hover:from-[#4D7CB6]/40">
-        
-        {/* Blue title matching the image */}
+
         <h2 className="text-4xl font-bold mb-12 text-[#6989BE] dark:text-[#83AEE2]">
           Skills & Technologies
         </h2>
-       
-        {/* Category Tabs - More rectangular */}
+
         <div className="flex overflow-x-auto mb-8 pb-2">
           <div className="flex bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm rounded-md p-1 w-full max-w-4xl mx-auto border border-gray-100 dark:border-gray-700">
             {skillCategories.map((category) => (
@@ -81,8 +75,7 @@ export default function SkillsSection() {
             ))}
           </div>
         </div>
-       
-        {/* Skills Display - More rectangular with subtle gradient */}
+
         <div className="flex flex-wrap gap-3 justify-center">
           {activeSkills.map((skill) => (
             <span

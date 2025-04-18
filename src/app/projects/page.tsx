@@ -5,7 +5,6 @@ import Link from 'next/link';
 import ProjectCard from '@/components/ProjectCard';
 import TitleCard from '@/components/TitleCard';
 
-// Project data array
 const projects = [
   {
     imageUrl: "/images/projects/CodeSagePhoto.png",
@@ -117,7 +116,6 @@ const projects = [
 export default function ProjectsPage() {
   return (
     <main className="min-h-screen bg-white dark:bg-gray-900">
-      {/* Gradient background container for TitleCard */}
       <div className="w-full bg-gradient-to-b from-[#83AEE2] to-white dark:from-[#4D7CB6] dark:to-gray-900 py-16 h-80">
         <TitleCard 
           title="PROJECTS"
@@ -147,9 +145,7 @@ export default function ProjectsPage() {
           </Link>
         </div>
         
-        {/* Modified grid: reduced to 2 columns on large screens */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
-          {/* Map over projects array to render ProjectCard components */}
           {projects.map((project, index) => (
             <ProjectCard
               key={index}
@@ -159,7 +155,7 @@ export default function ProjectsPage() {
               technologies={project.technologies}
               githubUrl={project.githubUrl}
               demoUrl={project.demoUrl}
-              showDemo={project.showDemo} // Pass the showDemo property
+              showDemo={project.showDemo}
             />
           ))}
         </div>

@@ -4,7 +4,6 @@ import React, { useRef, useState, useEffect } from 'react';
 import HomeExperienceCard from './HomeExperienceCard';
 import Link from 'next/link';
 
-// Using the actual experiences from your project
 const experiences = [
   {
     imageUrl: "/images/experiences/MidnightSun.jpg",
@@ -36,7 +35,7 @@ const experiences = [
   }
 ];
 
-// Need to duplicate the array to create a seamless loop effect
+
 const duplicatedExperiences = [...experiences, ...experiences];
 
 const HomeExperienceSection: React.FC = () => {
@@ -46,14 +45,14 @@ const HomeExperienceSection: React.FC = () => {
   const [isAnimating, setIsAnimating] = useState(true);
   const [cardWidth, setCardWidth] = useState(0);
 
-  // Get container and card dimensions
+
   useEffect(() => {
     if (containerRef.current) {
-      // Calculate card width including margins
+  
       const firstCard = containerRef.current.querySelector('.experience-card');
       if (firstCard) {
         const cardRect = firstCard.getBoundingClientRect();
-        setCardWidth(cardRect.width + 24); // width + margin
+        setCardWidth(cardRect.width + 24); 
       }
     }
 
@@ -62,7 +61,7 @@ const HomeExperienceSection: React.FC = () => {
         const firstCard = containerRef.current.querySelector('.experience-card');
         if (firstCard) {
           const cardRect = firstCard.getBoundingClientRect();
-          setCardWidth(cardRect.width + 24); // width + margin
+          setCardWidth(cardRect.width + 24); 
         }
       }
     };
@@ -71,11 +70,11 @@ const HomeExperienceSection: React.FC = () => {
     return () => window.removeEventListener('resize', handleResize);
   }, []);
 
-  // Animate the scroll
+
   useEffect(() => {
     if (!isAnimating || cardWidth === 0) return;
 
-    const scrollSpeed = 1; // pixels per frame - adjust for faster/slower
+    const scrollSpeed = 1; 
     const totalWidth = cardWidth * experiences.length;
     
     let animationFrameId: number;
@@ -90,7 +89,7 @@ const HomeExperienceSection: React.FC = () => {
       
       setScrollPosition(currentPosition);
       
-      // Calculate active index
+
       const newActiveIndex = Math.floor(currentPosition / cardWidth) % experiences.length;
       if (newActiveIndex !== activeIndex) {
         setActiveIndex(newActiveIndex);
@@ -106,7 +105,7 @@ const HomeExperienceSection: React.FC = () => {
     };
   }, [isAnimating, scrollPosition, cardWidth, activeIndex]);
 
-  // Handle manual dot navigation
+
   const goToCard = (index: number) => {
     setIsAnimating(false);
     setActiveIndex(index);
@@ -119,7 +118,7 @@ const HomeExperienceSection: React.FC = () => {
       });
       setScrollPosition(newPosition);
       
-      // Resume animation after transition
+
       setTimeout(() => {
         setIsAnimating(true);
       }, 1000);
@@ -128,7 +127,7 @@ const HomeExperienceSection: React.FC = () => {
 
   return (
     <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      {/* Card container with gradient background and hover effects */}
+
       <div 
         className="border border-gray-200 dark:border-gray-700 rounded-md shadow-md p-6 md:p-8
           bg-gradient-to-b from-[#83AEE2]/30 to-white dark:from-[#4D7CB6]/30 dark:to-gray-800
@@ -141,7 +140,6 @@ const HomeExperienceSection: React.FC = () => {
         }}
       >
         
-        {/* Blue title matching the image */}
         <h2 className="text-4xl font-bold mb-8 text-[#6989BE] dark:text-[#83AEE2]">
           Experience
         </h2>
@@ -150,9 +148,9 @@ const HomeExperienceSection: React.FC = () => {
           Places I have worked and projects I have contributed to throughout my career.
         </p>
         
-        {/* Scrollable Experience Card Container - Continuous scroll */}
+
         <div className="relative mx-auto w-full overflow-hidden">
-          {/* Scrollable Container */}
+  
           <div 
             ref={containerRef}
             className="flex overflow-x-hidden"
@@ -177,7 +175,7 @@ const HomeExperienceSection: React.FC = () => {
             </div>
           </div>
           
-          {/* Indicator Dots */}
+  
           <div className="flex justify-center space-x-3 mt-6">
             {experiences.map((_, index) => (
               <button
@@ -194,7 +192,7 @@ const HomeExperienceSection: React.FC = () => {
           </div>
         </div>
         
-        {/* View All Experiences Link - Updated with gradient background */}
+
         <div className="mt-10 text-center">
           <Link
             href="/experience"

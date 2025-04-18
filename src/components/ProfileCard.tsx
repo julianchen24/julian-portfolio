@@ -6,18 +6,15 @@ import Image from 'next/image';
 export default function ProfileCard() {
   return (
     <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      {/* Card container with gradient background and hover effects */}
       <div className="border border-gray-200 dark:border-gray-700 rounded-md shadow-md p-6 md:p-8
         bg-gradient-to-b from-[#83AEE2]/30 to-white dark:from-[#4D7CB6]/30 dark:to-gray-800
         transition-all duration-300 hover:shadow-xl hover:translate-y-[-5px] hover:from-[#83AEE2]/40 hover:to-white dark:hover:from-[#4D7CB6]/40">
-        
-        {/* Rest of the component remains the same */}
+
         <h2 className="text-4xl font-bold mb-8 text-[#6989BE] dark:text-[#83AEE2]">
           About Me
         </h2>
         
         <div className="flex flex-col md:flex-row items-center md:items-start gap-8">
-          {/* Left: Profile Image */}
           <div className="flex-shrink-0">
             <Image
               src="/images/PortfolioJulian.jpg"
@@ -27,8 +24,7 @@ export default function ProfileCard() {
               className="rounded-xl object-cover shadow-md"
             />
           </div>
-          
-          {/* Right: Profile Info + About Me + Tech Stack */}
+
           <div className="flex-1 flex flex-col items-center md:items-start">
             <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-2">
               Julian Chen
@@ -36,8 +32,7 @@ export default function ProfileCard() {
             <p className="text-lg font-medium text-[#4D7CB6] dark:text-[#83AEE2] mb-4">
               UNIVERSITY OF WATERLOO COMPUTER ENGINEERING
             </p>
-            
-            {/* About Me Section */}
+
             <h2 className="text-xl font-bold text-gray-900 dark:text-white mb-2">
               About Me
             </h2>
@@ -51,8 +46,7 @@ export default function ProfileCard() {
                 basketball, running, skating, photography, and chasing sunsets.
               </p>
             </div>
-            
-            {/* Contact Info */}
+
             <p className="text-gray-700 dark:text-gray-300 mb-6 text-center md:text-left">
               Feel free to contact me at{" "}
               <a
@@ -71,8 +65,7 @@ export default function ProfileCard() {
                 LinkedIn
               </a>!
             </p>
-            
-            {/* Technologies Grid */}
+
             <div className="w-full">
               <h3 className="text-lg font-semibold text-[#6989BE] dark:text-[#83AEE2] mb-3">
                 I built and designed this website using Next.js, TypeScript, and Tailwind!

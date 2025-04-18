@@ -5,7 +5,7 @@ export default function Footer() {
     <footer className="py-12 bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-400 transition-colors duration-200">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          {/* Left Column - Contact */}
+
           <div>
             <h2 className="text-2xl font-bold text-gray-800 dark:text-white mb-4">Contacts</h2>
             <p className="mb-2">
@@ -17,14 +17,12 @@ export default function Footer() {
             </p>
           </div>
           
-          {/* Right Column - Social Links */}
           <div>
             <h2 className="text-2xl font-bold text-gray-800 dark:text-white mb-4">Socials</h2>
             <p className="mb-4">Check out my socials below!</p>
             
-            {/* Social Icons Row */}
             <div className="flex space-x-4">
-              {/* LinkedIn */}
+
               <a 
                 href="https://www.linkedin.com/in/julian--chen" 
                 target="_blank" 
@@ -37,7 +35,7 @@ export default function Footer() {
                 </svg>
               </a>
               
-              {/* GitHub */}
+
               <a 
                 href="https://github.com/julianchen24" 
                 target="_blank" 
@@ -50,7 +48,7 @@ export default function Footer() {
                 </svg>
               </a>
 
-              {/* Instagram */}
+
               <a 
                 href="https://www.instagram.com/julixn.chxn_/" 
                 target="_blank" 
@@ -63,7 +61,6 @@ export default function Footer() {
                 </svg>
               </a>
               
-              {/* Email/Contact */}
               <a 
                 href="mailto:jy24chen@uwaterloo.ca"
                 className="bg-white dark:bg-gray-700 p-3 rounded-md text-gray-600 dark:text-gray-300 hover:text-red-600 dark:hover:text-red-400 transition-colors duration-200 shadow-sm hover:shadow"
@@ -77,7 +74,6 @@ export default function Footer() {
           </div>
         </div>
         
-        {/* Credits Section */}
         <div className="mt-12 pt-8 border-t border-gray-200 dark:border-gray-700 text-center">
           <p className="text-sm text-gray-500 dark:text-gray-400">
             Designed in{" "}

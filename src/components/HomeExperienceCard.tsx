@@ -22,7 +22,6 @@ const HomeExperienceCard: React.FC<HomeExperienceCardProps> = ({
   return (
     <div className="bg-white dark:bg-gray-800 rounded-lg shadow-md p-6 flex flex-col transition-all duration-300 hover:shadow-lg hover:scale-[1.02] border border-gray-100 dark:border-gray-700 w-full md:w-[500px] lg:w-[600px] flex-shrink-0 h-44">
       <div className="flex items-start gap-4 mb-4">
-        {/* Logo */}
         <div className="flex-shrink-0 w-16 h-16 bg-gray-200 dark:bg-gray-700 rounded-full overflow-hidden">
           <div className="relative w-full h-full">
             <Image 
@@ -34,7 +33,6 @@ const HomeExperienceCard: React.FC<HomeExperienceCardProps> = ({
           </div>
         </div>
         
-        {/* Title and Company */}
         <div className="flex-grow">
           <h3 className="text-lg font-semibold text-gray-900 dark:text-white">{title}</h3>
           <p className="text-sm text-gray-700 dark:text-gray-300">{company}</p>
@@ -45,7 +43,6 @@ const HomeExperienceCard: React.FC<HomeExperienceCardProps> = ({
         </div>
       </div>
       
-      {/* View Details Link */}
       <div className="mt-auto pt-2 flex justify-between items-center">
         <Link 
           href="/experience"

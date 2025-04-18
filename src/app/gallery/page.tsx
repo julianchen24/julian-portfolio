@@ -4,7 +4,6 @@ import React, { useState } from 'react';
 import Link from 'next/link';
 import TitleCard from '@/components/TitleCard';
 
-// Define the photo data
 const photos = [
   { id: 1, src: '/galleryphotos/GallaryPhoto1.jpg', alt: 'Gallery Photo 1' },
   { id: 2, src: '/galleryphotos/GallaryPhoto2.jpg', alt: 'Gallery Photo 2' },
@@ -36,17 +35,16 @@ export default function GalleryPage() {
   
   const openModal = (photoId: number) => {
     setSelectedPhoto(photoId);
-    document.body.style.overflow = 'hidden'; // Prevent scrolling when modal is open
+    document.body.style.overflow = 'hidden'; 
   };
   
   const closeModal = () => {
     setSelectedPhoto(null);
-    document.body.style.overflow = 'auto'; // Re-enable scrolling
+    document.body.style.overflow = 'auto'; 
   };
 
   return (
     <main className="min-h-screen bg-white dark:bg-gray-900" id="gallery">
-      {/* Gradient background container for TitleCard */}
       <div className="w-full bg-gradient-to-b from-[#83AEE2] to-white dark:from-[#4D7CB6] dark:to-gray-900 py-16 h-80">
         <TitleCard 
           title="GALLERY"
@@ -76,7 +74,6 @@ export default function GalleryPage() {
           </Link>
         </div>
         
-        {/* Photo Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
           {photos.map((photo) => (
             <div 
@@ -102,7 +99,6 @@ export default function GalleryPage() {
         </div>
       </div>
       
-      {/* Modal Overlay */}
       {selectedPhoto !== null && (
         <div 
           className="fixed inset-0 bg-black bg-opacity-75 z-50 flex items-center justify-center p-4"
@@ -110,9 +106,8 @@ export default function GalleryPage() {
         >
           <div 
             className="relative max-w-6xl w-full max-h-[90vh] bg-white dark:bg-gray-800 rounded-lg shadow-2xl overflow-hidden"
-            onClick={(e) => e.stopPropagation()} // Prevent closing when clicking inside the modal
+            onClick={(e) => e.stopPropagation()} 
           >
-            {/* Close button */}
             <button 
               className="absolute top-4 right-4 z-10 bg-white dark:bg-gray-800 rounded-full p-2 shadow-md hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors"
               onClick={closeModal}
@@ -121,8 +116,6 @@ export default function GalleryPage() {
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" />
               </svg>
             </button>
-            
-            {/* Full-size image */}
             <div className="w-full h-full flex items-center justify-center">
               <img
                 src={photos.find(p => p.id === selectedPhoto)?.src}
@@ -130,8 +123,6 @@ export default function GalleryPage() {
                 className="max-w-full max-h-[80vh] object-contain"
               />
             </div>
-            
-            {/* Navigation buttons */}
             <div className="absolute inset-y-0 left-0 flex items-center">
               <button 
                 className="bg-white dark:bg-gray-800 rounded-full p-2 shadow-md hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors ml-4"
@@ -162,7 +153,6 @@ export default function GalleryPage() {
               </button>
             </div>
             
-            {/* Thumbnail navigation */}
             <div className="absolute bottom-0 inset-x-0 bg-white dark:bg-gray-800 p-4 flex space-x-2 overflow-x-auto">
               {photos.map((photo) => (
                 <div 

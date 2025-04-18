@@ -19,11 +19,10 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
   technologies,
   githubUrl,
   demoUrl = '#',
-  showDemo = false // Default to false
+  showDemo = false 
 }) => {
   return (
     <div className="bg-white dark:bg-gray-800 rounded-lg shadow-md overflow-hidden transition-all duration-300 hover:shadow-xl hover:scale-[1.02]">
-      {/* Image container */}
       <div className="relative h-90 bg-gray-300 dark:bg-gray-700 overflow-hidden">
         <img
           src={imageUrl}
@@ -58,8 +57,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
             </svg>
             View Project
           </a>
-          
-          {/* Only render demo button if showDemo is explicitly true */}
+
           {showDemo === true && (
             <a
               href={demoUrl}

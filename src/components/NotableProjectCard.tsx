@@ -7,18 +7,15 @@ import Image from 'next/image';
 const NotableProjectCard: React.FC = () => {
   return (
     <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      {/* Card container with gradient background and hover effects */}
       <div className="border border-gray-200 dark:border-gray-700 rounded-md shadow-md p-6 md:p-8
         bg-gradient-to-b from-[#83AEE2]/30 to-white dark:from-[#4D7CB6]/30 dark:to-gray-800
         transition-all duration-300 hover:shadow-xl hover:translate-y-[-5px] hover:from-[#83AEE2]/40 hover:to-white dark:hover:from-[#4D7CB6]/40">
         
-        {/* Rest of the component remains the same */}
         <h2 className="text-4xl font-bold mb-8 text-[#6989BE] dark:text-[#83AEE2]">
         ⭐ Notable Project ⭐
         </h2>
         
         <div className="flex flex-col md:flex-row gap-8 mb-6">
-          {/* Left side - Project Image (made taller) */}
           <div className="md:w-3/5 h-96 md:h-[500px] rounded-lg overflow-hidden">
             <div className="relative w-full h-full">
               <Image 
@@ -29,8 +26,7 @@ const NotableProjectCard: React.FC = () => {
               />
             </div>
           </div>
-          
-          {/* Right side - Project Info */}
+
           <div className="md:w-2/5 flex flex-col justify-center">
             <h3 className="text-4xl font-bold text-[#6989BE] dark:text-[#83AEE2] mb-4">
               Termium Plus API
@@ -42,9 +38,7 @@ const NotableProjectCard: React.FC = () => {
           </div>
         </div>
         
-        {/* Button row - both buttons on same line */}
         <div className="mt-6 flex justify-end items-center">
-          {/* Buttons side by side */}
           <div className="flex gap-4">
             <a 
               href="https://api.julianchen.net/static/index.html" 

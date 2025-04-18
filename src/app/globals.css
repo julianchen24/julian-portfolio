@@ -28,7 +28,6 @@ body {
   overflow-x: hidden;
 }
 
-/* Selective snap scrolling styles */
 .snap-container {
   scroll-snap-type: y mandatory;
   overflow-y: auto;
@@ -41,21 +40,18 @@ body {
   scroll-snap-align: start;
 }
 
-/* Hero section styling */
 section.hero {
   height: 100vh;
   min-height: 100vh;
   max-height: 100vh;
 }
 
-/* Content sections styling */
 section.content {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
 }
 
-/* Timeline animations */
 @keyframes timeline-grow {
   0% {
     transform: scaleY(0);
@@ -113,7 +109,6 @@ section.content {
   animation: timeline-grow 1.5s ease-out forwards;
 }
 
-/* Card animations based on position */
 .slide-right {
   animation: slide-in-right 0.6s ease-out forwards;
 }
@@ -121,8 +116,6 @@ section.content {
 .slide-left {
   animation: slide-in-left 0.6s ease-out forwards;
 }
-
-/* Add these animations to your globals.css file */
 
 @keyframes date-fade-in {
   0% {
@@ -137,11 +130,10 @@ section.content {
 
 .timeline-date {
   animation: date-fade-in 0.5s ease-out forwards;
-  animation-delay: 0.8s; /* Play after the timeline animation */
+  animation-delay: 0.8s;
   opacity: 0;
 }
 
-/* Optional animation for hovering over dates */
 .timeline-date:hover {
   transform: scale(1.1);
   transition: transform 0.3s ease;

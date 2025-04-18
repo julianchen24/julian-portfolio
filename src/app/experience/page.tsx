@@ -69,7 +69,6 @@ export default function ExperiencePage() {
 
   return (
     <main className="min-h-screen bg-white dark:bg-gray-800">
-      {/* Gradient background container for TitleCard */}
       <div className="w-full bg-gradient-to-b from-[#83AEE2] to-white dark:from-[#4D7CB6] dark:to-gray-900 py-16 h-80">
         <TitleCard 
           title="EXPERIENCE"
@@ -99,7 +98,6 @@ export default function ExperiencePage() {
           </Link>
         </div>
 
-        {/* Timeline container */}
         <div ref={timelineRef} className="relative pt-8 pb-20">
           <div className="absolute left-1/2 transform -translate-x-1/2 top-0 h-full w-1 bg-blue-200 dark:bg-blue-900 timeline-line"></div>
 
@@ -116,7 +114,6 @@ export default function ExperiencePage() {
             />
           ))}
 
-          {/* Timeline end dot */}
           <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-5 h-5 rounded-full bg-blue-500 border-4 border-white dark:border-gray-800 timeline-dot"></div>
         </div>
       </div>

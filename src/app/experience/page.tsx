@@ -70,7 +70,7 @@ export default function ExperiencePage() {
   return (
     <main className="min-h-screen bg-white dark:bg-gray-800">
       {/* Gradient background container for TitleCard */}
-      <div className="w-full bg-gradient-to-b from-[#83AEE2] to-white py-16 h-80">
+      <div className="w-full bg-gradient-to-b from-[#83AEE2] to-white dark:from-[#4D7CB6] dark:to-gray-900 py-16 h-80">
         <TitleCard 
           title="EXPERIENCE"
           subtitle="My Professional Journey"

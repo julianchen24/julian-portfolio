@@ -36,10 +36,11 @@ export default function Home() {
   
   // Array of texts to rotate through
   const textArray = [
-    "I like to go skiing",
-    "I like to play basketball",
+    
+    "I like to learn new things",
     "I'm an aspiring software engineer",
-    "I'm a computer engineering student at the University of Waterloo"
+    "I am a Firmware Developer on Midnight Sun",
+    "I'm a Computer Engineering student at UWaterloo"
   ];
   
   // Handle typing animation

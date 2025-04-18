@@ -499,7 +499,7 @@ export default function Home() {
           <div className="h-16 flex items-center justify-center">
             <p className="text-2xl md:text-4xl font-medium text-white drop-shadow-[0_2px_4px_rgba(0,0,0,0.5)]">
               {text}
-              <span className="inline-block w-1 h-8 bg-white ml-1 animate-pulse"></span>
+              <span className="inline-block w-1 h-8 bg-[white] ml-1 animate-pulse"></span>
             </p>
           </div>
         </div>
@@ -521,7 +521,7 @@ export default function Home() {
       </section>
       
       {/* Content sections with reduced spacing */}
-      <div className="bg-white dark:bg-gray-900">
+      <div className="bg-[#C1D6F0] dark:bg-gray-900">
         {/* Profile Card Section */}
         <section className="py-12">
           <ProfileCard />

@@ -8,7 +8,7 @@ interface ProjectCardProps {
   description: string;
   technologies: string[];
   githubUrl: string;
-  demoUrl: string;
+  demoUrl?: string;
   showDemo?: boolean;
 }
 
@@ -18,7 +18,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
   description,
   technologies,
   githubUrl,
-  demoUrl,
+  demoUrl = '#',
   showDemo = false // Default to false
 }) => {
   return (

@@ -45,7 +45,6 @@ const HomeExperienceSection: React.FC = () => {
   const [scrollPosition, setScrollPosition] = useState(0);
   const [isAnimating, setIsAnimating] = useState(true);
   const [cardWidth, setCardWidth] = useState(0);
-  const [isHovering, setIsHovering] = useState(false);
 
   // Get container and card dimensions
   useEffect(() => {
@@ -135,11 +134,9 @@ const HomeExperienceSection: React.FC = () => {
           bg-gradient-to-b from-[#83AEE2]/30 to-white dark:from-[#4D7CB6]/30 dark:to-gray-800
           transition-all duration-300 hover:shadow-xl hover:translate-y-[-5px] hover:from-[#83AEE2]/40 hover:to-white dark:hover:from-[#4D7CB6]/40"
         onMouseEnter={() => {
-          setIsHovering(true);
           setIsAnimating(false);
         }}
         onMouseLeave={() => {
-          setIsHovering(false);
           setIsAnimating(true);
         }}
       >

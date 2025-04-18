@@ -45,6 +45,7 @@ const HomeExperienceSection: React.FC = () => {
   const [scrollPosition, setScrollPosition] = useState(0);
   const [isAnimating, setIsAnimating] = useState(true);
   const [cardWidth, setCardWidth] = useState(0);
+  const [isHovering, setIsHovering] = useState(false);
 
   // Get container and card dimensions
   useEffect(() => {
@@ -128,9 +129,20 @@ const HomeExperienceSection: React.FC = () => {
 
   return (
     <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      {/* Card container with gradient background similar to skills section */}
-      <div className="border border-gray-200 dark:border-gray-700 rounded-md shadow-md p-6 md:p-8
-        bg-gradient-to-b from-[#83AEE2]/30 to-white dark:from-[#4D7CB6]/30 dark:to-gray-800">
+      {/* Card container with gradient background and hover effects */}
+      <div 
+        className="border border-gray-200 dark:border-gray-700 rounded-md shadow-md p-6 md:p-8
+          bg-gradient-to-b from-[#83AEE2]/30 to-white dark:from-[#4D7CB6]/30 dark:to-gray-800
+          transition-all duration-300 hover:shadow-xl hover:translate-y-[-5px] hover:from-[#83AEE2]/40 hover:to-white dark:hover:from-[#4D7CB6]/40"
+        onMouseEnter={() => {
+          setIsHovering(true);
+          setIsAnimating(false);
+        }}
+        onMouseLeave={() => {
+          setIsHovering(false);
+          setIsAnimating(true);
+        }}
+      >
         
         {/* Blue title matching the image */}
         <h2 className="text-4xl font-bold mb-8 text-[#6989BE] dark:text-[#83AEE2]">
@@ -152,8 +164,6 @@ const HomeExperienceSection: React.FC = () => {
               msOverflowStyle: 'none',
               WebkitOverflowScrolling: 'touch'
             }}
-            onMouseEnter={() => setIsAnimating(false)}
-            onMouseLeave={() => setIsAnimating(true)}
           >
             <div className="flex space-x-6 pl-3 pr-3">
               {duplicatedExperiences.map((exp, index) => (

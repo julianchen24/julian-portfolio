@@ -6,13 +6,30 @@ import TitleCard from '@/components/TitleCard';
 
 // Define the photo data
 const photos = [
-  { id: 1, src: '/galleryphotos/DanielRyanJulian.png', alt: 'Gallery Photo 1' },
-  { id: 2, src: '/galleryphotos/DanielRyanJulian.png', alt: 'Gallery Photo 2' },
-  { id: 3, src: '/galleryphotos/DanielRyanJulian.png', alt: 'Gallery Photo 3' },
-  { id: 4, src: '/galleryphotos/DanielRyanJulian.png', alt: 'Gallery Photo 4' },
-  { id: 5, src: '/galleryphotos/DanielRyanJulian.png', alt: 'Gallery Photo 5' },
-  { id: 6, src: '/galleryphotos/DanielRyanJulian.png', alt: 'Gallery Photo 6' },
-];
+  { id: 1, src: '/galleryphotos/GallaryPhoto1.jpg', alt: 'Gallery Photo 1' },
+  { id: 2, src: '/galleryphotos/GallaryPhoto2.jpg', alt: 'Gallery Photo 2' },
+  { id: 3, src: '/galleryphotos/GallaryPhoto3.jpeg', alt: 'Gallery Photo 3' },
+  { id: 4, src: '/galleryphotos/GallaryPhoto4.jpg', alt: 'Gallery Photo 4' },
+  { id: 5, src: '/galleryphotos/GallaryPhoto5.jpg', alt: 'Gallery Photo 5' },
+  { id: 6, src: '/galleryphotos/GallaryPhoto6.jpg', alt: 'Gallery Photo 6' },
+  { id: 7, src: '/galleryphotos/GallaryPhoto7.jpg', alt: 'Gallery Photo 7' },
+  { id: 8, src: '/galleryphotos/GallaryPhoto8.jpg', alt: 'Gallery Photo 8' },
+  { id: 9, src: '/galleryphotos/GallaryPhoto9.jpg', alt: 'Gallery Photo 9' },
+  { id: 10, src: '/galleryphotos/GallaryPhoto10.jpg', alt: 'Gallery Photo 10' },
+  { id: 11, src: '/galleryphotos/GallaryPhoto11.jpg', alt: 'Gallery Photo 11' },
+  { id: 12, src: '/galleryphotos/GallaryPhoto12.jpg', alt: 'Gallery Photo 12' },
+  { id: 13, src: '/galleryphotos/GallaryPhoto13.jpg', alt: 'Gallery Photo 13' },
+  { id: 14, src: '/galleryphotos/GallaryPhoto14.jpg', alt: 'Gallery Photo 14' },
+  { id: 15, src: '/galleryphotos/GallaryPhoto15.jpg', alt: 'Gallery Photo 15' },
+  { id: 16, src: '/galleryphotos/GallaryPhoto16.jpg', alt: 'Gallery Photo 16' },
+  { id: 17, src: '/galleryphotos/GallaryPhoto17.jpg', alt: 'Gallery Photo 17' },
+  { id: 18, src: '/galleryphotos/GallaryPhoto18.jpg', alt: 'Gallery Photo 18' },
+  { id: 19, src: '/galleryphotos/GallaryPhoto19.jpg', alt: 'Gallery Photo 19' },
+  { id: 20, src: '/galleryphotos/GallaryPhoto20.jpg', alt: 'Gallery Photo 20' },
+  { id: 21, src: '/galleryphotos/GallaryPhoto21.jpg', alt: 'Gallery Photo 21' },
+  { id: 22, src: '/galleryphotos/DanielRyanJulian.png', alt: 'Gallery Photo 22' },
+
+]
 
 export default function GalleryPage() {
   const [selectedPhoto, setSelectedPhoto] = useState<number | null>(null);

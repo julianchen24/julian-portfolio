@@ -18,6 +18,9 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "Julian's Portfolio",
   description: "Personal portfolio website for Julian",
+  icons: {
+    icon: '/ChristmasSnoopy.jpg', // This points to a file in your public directory
+  },
 };
 
 export default function RootLayout({

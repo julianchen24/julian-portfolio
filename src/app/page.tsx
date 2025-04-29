@@ -33,10 +33,11 @@ export default function Home() {
   
   const textArray = [
     
-    "I like to learn new things",
-    "I'm an aspiring software engineer",
-    "I am a Firmware Developer on Midnight Sun",
-    "I'm a Computer Engineering student at UWaterloo"
+    "I love to learn new things!",
+    "I am an aspiring software engineer!",
+    "I am an Autonomous Software Developer on WATonomous!",
+    "I am a Firmware Developer on Midnight Sun!",
+    "I am a Computer Engineering student at UWaterloo!"
   ];
   
 

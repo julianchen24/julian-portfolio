@@ -7,15 +7,23 @@ import TitleCard from '@/components/TitleCard';
 
 const experiences = [
   {
+    title: "Autonomous Software Developer",
+    company: "WATonomous",
+    location: "Waterloo, ON",
+    duration: "Jan 2025 - Present",
+    description: "Built an autonomous navigation system using **C++, Python, ROS2**, implementing path planning with the **A*** **algorithm**\nDeveloped a real-time obstacle detection system that processes raw LIDAR sensor data to generate dynamic environmental maps, achieving a **95% path execution success rate** in autonomous navigation tasks",
+    imageUrl: "/images/experiences/WATonomousPhoto.jpg"
+  },
+  {
     title: "Database Analyst",
     company: "Blue Insight Consultation",
     location: "Vancouver, BC",
-    duration: "Jan 2025 - Present",
+    duration: "Jan 2025 - Apr 2025",
     description: "Maintained **PL/SQL** procedures and developed custom scripts using **Toad for Oracle** to analyze, extract, cleanse, and filter employee management data for enterprise-scale clients\nMonitored critical HRIS components within a multi-tier architecture including virtualized applications, Windows-based web services, and Oracle databases on Linux servers, ensuring consistent system performance\nSupported SDLC with regression testing and debugging of Oracle packages across Development, QA, UAT, and Production environments, cutting maintenance downtime by **25%**",
     imageUrl: "/images/experiences/BlueInsight.png"
   },
   {
-    title: "Microsoft Azure AI Developer",
+    title: "Microsoft Azure AI Developer Intern",
     company: "Resonate AI | University Of Waterloo",
     location: "Remote — Waterloo, ON",
     duration: "Jan 2025 - Apr 2025",

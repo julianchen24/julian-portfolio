@@ -6,6 +6,13 @@ import Link from 'next/link';
 
 const experiences = [
   {
+    imageUrl: "/images/experiences/WATonomousPhoto.jpg",
+    title: "Autonomous Software Developer",
+    company: "WATonomous",
+    location: "Waterloo, ON",
+    duration: "Jan 2025 - Present"
+  },
+  {
     imageUrl: "/images/experiences/MidnightSun.jpg",
     title: "Firmware Developer",
     company: "Midnight Sun Solar Car Design Team",
@@ -24,11 +31,11 @@ const experiences = [
     title: "Database Analyst",
     company: "Blue Insight Consultation",
     location: "Vancouver, BC",
-    duration: "Jan 2025 - Present"
+    duration: "Jan 2025 - Apr 2025"
   },
   {
     imageUrl: "/images/experiences/ResonateAI.jpg",
-    title: "Microsoft Azure AI Developer",
+    title: "Microsoft Azure AI Developer Intern",
     company: "Resonate AI | University Of Waterloo",
     location: "Remote — Waterloo, ON",
     duration: "Jan 2025 - Apr 2025"
